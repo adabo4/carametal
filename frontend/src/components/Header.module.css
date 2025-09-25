@@ -31,12 +31,18 @@
     font-size: 105px;
     width: 500px;
     line-height: 1.2;
+    font-weight: 600;
+    font-family: var(--font-montserrat-alt1);
+    ;
+
 }
 
 .second-title {
     color: white;
     font-size: 35px;
-    width: 400px;
+    width: 800px;
+    font-family: var(--font-montserrat-alt1);
+    font-weight: 600;
 }
 
 .header-text {
@@ -58,4 +64,21 @@
 
 .transparent {
     background-color: transparent;
+}
+
+@media screen and (max-width: 900px) {
+    .main-title {
+        font-size: 40px;
+        width: 100%;
+
+    }
+
+    .second-title {
+        width: 100%;
+    }
+
+
+    .header-cover {
+        opacity: 0;
+    }
 }

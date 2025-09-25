@@ -14,6 +14,7 @@
     flex-direction: row;
     justify-content: space-around;
     cursor: pointer;
+    position: relative;
 }
 
 .nav-items-left,
@@ -59,4 +60,129 @@
     color: var(--primary-color);
     font-weight: 600;
     text-align: center;
+}
+
+.nav-btn {
+    visibility: hidden;
+}
+
+
+@media screen and (max-width: 900px) {
+
+    .navbar {
+        flex-direction: column;
+
+
+    }
+
+
+    .nav-btn {
+        visibility: visible;
+        color: white;
+        font-size: 3em;
+        z-index: 5;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+    }
+
+    .nav-btn-close {
+        color: black;
+        font-size: 3em;
+        z-index: 3;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+
+    }
+
+    .visible {
+        visibility: hidden;
+    }
+
+
+
+    .nav-items-right {
+        flex-direction: column;
+        transform: translateY(-180vh);
+        background-color: white;
+        z-index: 3;
+        opacity: 0;
+
+
+    }
+
+    .nav-items-right.show {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transform: translateY(0);
+        background-color: white;
+        color: black;
+        transition: transform 0.4s linear, opacity .5s ease-in-out, ;
+        opacity: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+
+    }
+
+
+
+
+
+    /* 
+    .hamburger-icon {
+        z-index: 3;
+        color: rgb(0, 0, 0);
+        font-size: 3em;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 15px 15px 0 0;
+        visibility: visible;
+
+    }
+
+    .navbar {
+        flex-direction: column;
+        border: 1px solid blue;
+    }
+
+    .nav-items-right {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        min-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: black;
+        gap: 1.5rem;
+        background-color: rgb(255, 255, 255);
+        transition: 1s;
+        transform: translateY(0vh);
+        z-index: 5;
+
+
+    }
+
+    .nav-close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: black;
+        z-index: 5;
+    }
+
+
+
+} */
+
 }

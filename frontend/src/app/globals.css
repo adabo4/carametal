@@ -8,6 +8,7 @@
     box-sizing: border-box;
 }
 
+/* In globals.css */
 :root {
     --primary-color: rgb(75, 171, 75);
     --secondary-color: rgba(0, 0, 0, 0.7);

@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import ConditionalNavigation from "@/components/ConditionalNavigation";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Carametal | Povrchové úpravy | Otryskávanie | Nitra",
@@ -18,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
-      <body className={inter.className}>
+      <body>
         <ConditionalNavigation></ConditionalNavigation>
         {children}
       </body>
