@@ -9,6 +9,10 @@
     z-index: 1;
 }
 
+.mobileNavLinks {
+    font-family: var(--font-avenirLight);
+}
+
 .navbar {
     display: flex;
     flex-direction: row;
@@ -30,6 +34,8 @@
 
 .nav-items-right {
     justify-content: space-around;
+    font-family: var(--font-ganache);
+
 }
 
 .nav-items-right li {
@@ -49,6 +55,11 @@
     justify-content: center;
 }
 
+.nav-items-left p {
+    width: 150px;
+    font-family: var(--font-monserratSemiBold), 'sans-serif';
+}
+
 .nav-items-left img {
     position: relative;
     z-index: 1;
@@ -62,47 +73,77 @@
     text-align: center;
 }
 
+.btn {
+    width: 150px;
+    padding: 15px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    margin: 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--primary-color);
+    display: none;
+}
+
 .nav-btn {
     visibility: hidden;
 }
+
 
 
 @media screen and (max-width: 900px) {
 
     .navbar {
         flex-direction: column;
-
+        align-items: center;
+        background-color: white;
+        justify-content: flex-start;
+        height: 230px;
 
     }
 
+    .btn {
+        display: block;
+
+    }
+
+    .nav-items-left {
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        gap: 30px;
+
+    }
+
+    /* .nav-items-left {
+        display: flex;
+        flex-direction: column;
+    } */
 
     .nav-btn {
         visibility: visible;
-        color: white;
-        font-size: 3em;
+        color: var(--primary-color);
+        font-size: 2em;
         z-index: 5;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 15px;
+        right: 15px;
 
     }
 
     .nav-btn-close {
-        color: black;
-        font-size: 3em;
+        color: var(--primary-color);
+        font-size: 2em;
         z-index: 3;
         position: absolute;
-        top: 0;
-        right: 0;
-
-
+        top: 15px;
+        right: 15px;
     }
 
     .visible {
-        visibility: hidden;
+        display: none;
+
     }
-
-
 
     .nav-items-right {
         flex-direction: column;
@@ -110,15 +151,14 @@
         background-color: white;
         z-index: 3;
         opacity: 0;
-
-
     }
 
     .nav-items-right.show {
         flex-direction: column;
         justify-content: flex-start;
+        padding: 5em;
         align-items: center;
-        transform: translateY(0);
+        transform: translateY(0vh);
         background-color: white;
         color: black;
         transition: transform 0.4s linear, opacity .5s ease-in-out, ;
@@ -129,11 +169,8 @@
         height: 100vh;
         width: 100vw;
 
+
     }
-
-
-
-
 
     /* 
     .hamburger-icon {
@@ -147,7 +184,7 @@
         visibility: visible;
 
     }
-
+: 3;
     .navbar {
         flex-direction: column;
         border: 1px solid blue;

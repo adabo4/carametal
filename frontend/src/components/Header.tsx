@@ -19,11 +19,17 @@ export default function Header() {
           >
             Pieskovanie, otryskovávanie, nátery v Nitre
           </h2>
-          <button className={styles.btn}>Projekty</button>
-          <button className={styles.btn}>Kontaktujte nás</button>
+          <div className="btn-wrapper">
+            <button className={`${styles.btn} ${styles.projects}`}>
+              Projekty
+            </button>
+            <button className={`${styles.btn} ${styles.cta}`}>
+              Kontaktujte nás
+            </button>
+          </div>
         </div>
       </header>
-      <div className={styles["header-cover"]}>sfd</div>
+      {/* <div className={styles["header-cover"]}>sfd</div> */}
     </>
   );
 }

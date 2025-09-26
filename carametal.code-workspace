@@ -1,0 +1,43 @@
+{
+  "folders": [
+    {
+      "name": "🏠 Carametal (Root)",
+      "path": "."
+    },
+    {
+      "name": "🖥️ Frontend",
+      "path": "./frontend"
+    },
+    {
+      "name": "🔧 Backend",
+      "path": "./backend"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.git": false,
+      "**/.next": true,
+      "**/dist": true,
+      "**/build": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/dist": true,
+      "**/build": true
+    },
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "npm.packageManager": "npm",
+    "eslint.workingDirectories": ["frontend", "backend"]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.vscode-typescript-next",
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-eslint",
+      "ms-vscode.npm-script-explorer"
+    ]
+  }
+}
