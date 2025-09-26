@@ -13,6 +13,8 @@
     font-family: var(--font-avenirLight);
 }
 
+
+
 .navbar {
     display: flex;
     flex-direction: row;
@@ -29,6 +31,10 @@
     color: white;
     border: var(--primary-color) 1px solid;
 
+}
+
+.nav-items-left a {
+    display: flex;
 }
 
 
@@ -113,6 +119,14 @@
         height: 150px;
         gap: 30px;
 
+    }
+
+    .nav-items-left a {
+        display: inherit;
+        flex-direction: column;
+        height: 150px;
+        align-items: center;
+        gap: 25px;
     }
 
     /* .nav-items-left {

@@ -14,8 +14,10 @@ export default function Navbar() {
     <>
       <nav className={`${styles.navbar} `}>
         <div className={`${styles["nav-items-left"]}`}>
-          <p>CARAMETAL spol. s.r.o.</p>
-          <div className={styles.logo}></div>
+          <Link href="/">
+            <p>CARAMETAL spol. s.r.o.</p>
+            <div className={styles.logo}></div>
+          </Link>
         </div>
         <button className={styles["btn"]}>Kontaktujte nás</button>
         <ul
