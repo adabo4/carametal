@@ -1,14 +1,16 @@
 import React from "react";
+import "./home.css";
 
 export default function Home() {
   return (
     <>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
-        doloremque totam quaerat consequatur quos, sequi blanditiis itaque
-        minima odit aspernatur illo delectus nostrum sint corporis harum, ad
-        voluptatibus omnis praesentium!
-      </p>
+      <section className="section-header">
+        <div className="titles">
+          <h2>Expresné dodanie aj s manipuláciou</h2>
+          <h3>CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám</h3>
+        </div>
+        <button className="btn">Čítaj</button>
+      </section>
     </>
   );
 }

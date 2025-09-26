@@ -13,14 +13,10 @@ export const avenirLight = localFont({
   src: "../fonts/Avenir Light.ttf",
   variable: "--font-avenirLight",
 });
-export const ganache = localFont({
-  src: "../fonts/Ganache Regular.ttf",
-  variable: "--font-ganache",
-});
 
 // export const montserratAlt1 = Montserrat_Alternates({
 //   subsets: ["latin", "latin-ext"],
-//   weight: ["500", "600"],
+//   weight: ["500", "600", "700"],
 //   variable: "--font-montserrat-alt1",
 // });
 

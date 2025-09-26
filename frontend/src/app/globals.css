@@ -10,6 +10,7 @@
 
 /* In globals.css */
 :root {
-    --primary-color: rgb(75, 171, 75);
+    --primary-color: #4bab4b;
+    --sections-green: #5DA546;
     --secondary-color: rgba(0, 0, 0, 0.7);
 }

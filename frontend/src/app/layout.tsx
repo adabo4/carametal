@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
-      <body className={montserratAlt1SemiBold.variable}>
+      <body className={`${montserratAlt1SemiBold.variable}`}>
         <ConditionalNavigation></ConditionalNavigation>
         {children}
       </body>
