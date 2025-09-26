@@ -1,7 +1,6 @@
 .section-header {
     display: flex;
     align-items: center;
-    border: 1px solid red;
     justify-content: space-between;
     margin: 4em;
 
@@ -10,12 +9,13 @@
 .section-header h2 {
     color: #CE2C34;
     font-family: var(--font-monserratSemiBold);
-    font-size: 22px;
+    font-size: 1.6em;
+    font-weight: bold;
 }
 
 .section-header h3 {
     color: var(--sections-green);
-    font-size: 45px;
+    font-size: 2.9em;
     font-family: var(--font-monserratSemiBold);
     width: 520px;
     font-weight: 600;
@@ -34,4 +34,24 @@
 
 }
 
-@media screen {}
+@media screen and (max-width: 900px) {
+    .section-header {
+        flex-direction: column;
+        gap: 2em;
+        margin: 2em;
+    }
+
+    .titles h3 {
+        width: 100%;
+        margin: 0;
+        font-size: 2em;
+        line-height: 1.1;
+        margin-top: 1em;
+
+    }
+
+    .btn {
+        height: 50px;
+        width: 150px;
+    }
+}

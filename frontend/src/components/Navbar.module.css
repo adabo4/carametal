@@ -18,9 +18,10 @@
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     cursor: pointer;
     position: relative;
+
 }
 
 .nav-items-left,
@@ -41,7 +42,6 @@
 .nav-items-right {
     justify-content: space-around;
     font-family: var(--font-ganache);
-
 }
 
 .nav-items-right li {
@@ -93,6 +93,10 @@
 
 .nav-btn {
     visibility: hidden;
+}
+
+.nav-btn-close {
+    display: none;
 }
 
 
@@ -152,6 +156,8 @@
         position: absolute;
         top: 15px;
         right: 15px;
+        display: block;
+
     }
 
     .visible {
