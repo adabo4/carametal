@@ -1,6 +1,7 @@
 import React from "react";
 import { SectionTextProps } from "@/lib/helpers";
 import Image from "next/image";
+import { formatText } from "@/lib/functions";
 
 export default function SectionText({
   title,
@@ -23,9 +24,11 @@ export default function SectionText({
         </div>
       )}
       {paragraphs.map((paragraph, index) => (
-        <p key={index} className="section-text">
-          {paragraph}
-        </p>
+        <p
+          key={index}
+          className="section-text"
+          dangerouslySetInnerHTML={{ __html: formatText(paragraph) }}
+        />
       ))}
       {listItems && (
         <ul className="section-list">

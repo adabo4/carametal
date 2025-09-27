@@ -139,14 +139,11 @@
     justify-content: space-between;
 }
 
-
-
 .section-three-img {
     width: 600px;
-    height: 700px;
+    height: 950px;
     position: relative;
     overflow: hidden;
-
 }
 
 .section-three .section-text-wrapper {
@@ -160,7 +157,7 @@
 
 .cropped-image {
     object-fit: cover;
-    object-position: 70% top;
+    object-position: 40% top;
     transform: scale(1.1);
 
 }
