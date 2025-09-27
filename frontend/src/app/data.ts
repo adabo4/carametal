@@ -33,6 +33,11 @@ export const dataSection3 = [
       "Naše protipožiarne riešenia, vrátane intumescentných a cementových náterov, ako je Pyrostop, sú navrhnuté tak, aby izolovali oceľové konštrukcie, steny a stropy pred extrémnym teplom, čím pomáhajú oddialiť zlyhanie konštrukcie v prípade požiaru.",
       "Naše technologické zariadenie nám umožňuje ponúknuť Vám povrchovú úpravu nielen malých a stredných dielov, ale aj veľkorozmerných konštrukcií. ",
     ],
-    img: img,
+    img: {
+      src: img,
+      alt: "Fire protection and food-grade coatings",
+      width: 480,
+      height: 320,
+    },
   },
 ];
