@@ -2,6 +2,9 @@ import React from "react";
 import "./home.css";
 import Image from "next/image";
 import img1 from "./img/home_img/img1.jpg";
+import img2 from "./img/home_img/img2.jpg";
+import SectionText from "@/components/SectionText";
+import { data1, data2 } from "./data";
 
 export default function Home() {
   return (
@@ -13,7 +16,8 @@ export default function Home() {
         </div>
         <button className="btn">Čítaj</button>
       </section>
-      <section className="section-one">
+
+      {/* <section className="section-one">
         <div className="section-one-text-wrapper">
           <h4 className="section-one-title">
             Povrchové úpravy kontajnerov, priemyselné a potravinárske nátery
@@ -40,6 +44,34 @@ export default function Home() {
         <div className="section-one-img">
           <Image src={img1} alt="Picture of the author"></Image>
         </div>
+      </section> */}
+
+      <section className="section-one">
+        {data1.map((item, index) => (
+          <SectionText
+            className="section-text-wrapper"
+            key={index}
+            title={item.title}
+            paragraphs={item.paragraphs}
+            listItems={item.listItems}
+          ></SectionText>
+        ))}
+        <div className="section-one-img">
+          <Image src={img1} alt="Container Image Carametal"></Image>
+        </div>
+      </section>
+
+      <section className="section-two">
+        <div className="section-two-img"></div>
+
+        {data2.map((item, index) => (
+          <SectionText
+            className="section-text-wrapper"
+            key={index}
+            title={item.title}
+            paragraphs={item.paragraphs}
+          />
+        ))}
       </section>
     </>
   );

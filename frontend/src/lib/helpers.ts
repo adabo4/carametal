@@ -3,6 +3,13 @@ export interface NavItem {
   label: string;
 }
 
+export interface SectionTextProps {
+  title: string;
+  paragraphs: string[];
+  listItems?: string[];
+  className?: string;
+}
+
 export const navbarLinks: NavItem[] = [
   { href: "/sluzby", label: "Služby" },
   { href: "/projekty", label: "Projekty" },
