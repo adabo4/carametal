@@ -1,6 +1,14 @@
+import { StaticImageData } from "next/image";
 export interface NavItem {
   href: string;
   label: string;
+}
+
+export interface ImageProps {
+  src: string | StaticImageData;
+  alt?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface SectionTextProps {
@@ -8,6 +16,7 @@ export interface SectionTextProps {
   paragraphs: string[];
   listItems?: string[];
   className?: string;
+  img?: ImageProps;
 }
 
 export const navbarLinks: NavItem[] = [

@@ -1,3 +1,9 @@
+.main-container {
+    max-width: 1400px;
+    /* margin: 0 auto;
+    padding: 0 2em; */
+}
+
 .section-header {
     display: flex;
     align-items: center;
@@ -105,8 +111,6 @@
 
 }
 
-
-
 .section-two-img {
     background-image: url("./img/home_img/img2.webp");
     background-attachment: fixed;
@@ -123,7 +127,66 @@
 .section-two .section-text-wrapper {
     width: 400px;
     justify-self: start;
-    border: 1px solid red;
+
+}
+
+/*SECTION THREE*/
+
+.section-three {
+    border: 1px solid black;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+
+
+
+
+}
+
+.section-three-img {
+    width: 600px;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.section-three .section-text-wrapper {
+    width: 400px;
+    justify-self: flex-start;
+    margin-right: 2em;
+
+
+
+}
+
+.cropped-image {
+    object-fit: cover;
+    object-position: 70% top;
+    transform: scale(1.1);
+
+}
+
+@media screen and (min-width: 1500px) {
+
+    .main-container {
+        max-width: 1600px;
+        padding: 0 4em;
+
+    }
+
+    .section-two-img {
+        max-width: 800px;
+        height: 600px;
+    }
+
+    .section-header h3 {
+        font-size: 3.2em;
+    }
+
+    .section-title {
+        font-size: 2.2em;
+    }
 }
 
 @media screen and (max-width: 980px) {
@@ -207,7 +270,6 @@
 
     }
 
-
     /*SECTION TWO 900px*/
     .section-two {
         flex-direction: column;
@@ -235,9 +297,6 @@
         background-size: cover;
         /* or 'contain' depending on what you want */
         background-repeat: no-repeat;
-
-
-
     }
 
     .section-two .section-text-wrapper {
@@ -247,9 +306,6 @@
 
 }
 
-
-
-
 @media screen and (max-width: 400px) {
     .section-one {
         align-items: start;
@@ -258,5 +314,4 @@
     .section-two-img {
         height: 450px;
     }
-
 }

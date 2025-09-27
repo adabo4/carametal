@@ -2,22 +2,24 @@ import React from "react";
 import "./home.css";
 import Image from "next/image";
 import img1 from "./img/home_img/img1.jpg";
-import img2 from "./img/home_img/img2.jpg";
+import img4 from "./img/home_img/img4.jpg";
+import img3 from "./img/home_img/img3.jpg";
 import SectionText from "@/components/SectionText";
-import { data1, data2 } from "./data";
+import { dataSection1, dataSection2, dataSection3 } from "./data";
 
 export default function Home() {
   return (
     <>
-      <section className="section-header">
-        <div className="titles">
-          <h2>Expresné dodanie aj s manipuláciou</h2>
-          <h3>CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám</h3>
-        </div>
-        <button className="btn">Čítaj</button>
-      </section>
+      <div className="main-container">
+        <section className="section-header">
+          <div className="titles">
+            <h2>Expresné dodanie aj s manipuláciou</h2>
+            <h3>CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám</h3>
+          </div>
+          <button className="btn">Čítaj</button>
+        </section>
 
-      {/* <section className="section-one">
+        {/* <section className="section-one">
         <div className="section-one-text-wrapper">
           <h4 className="section-one-title">
             Povrchové úpravy kontajnerov, priemyselné a potravinárske nátery
@@ -46,33 +48,55 @@ export default function Home() {
         </div>
       </section> */}
 
-      <section className="section-one">
-        {data1.map((item, index) => (
-          <SectionText
-            className="section-text-wrapper"
-            key={index}
-            title={item.title}
-            paragraphs={item.paragraphs}
-            listItems={item.listItems}
-          ></SectionText>
-        ))}
-        <div className="section-one-img">
-          <Image src={img1} alt="Container Image Carametal"></Image>
-        </div>
-      </section>
+        <section className="section-one">
+          {dataSection1.map((item, index) => (
+            <SectionText
+              className="section-text-wrapper"
+              key={index}
+              title={item.title}
+              paragraphs={item.paragraphs}
+              listItems={item.listItems}
+            ></SectionText>
+          ))}
+          <div className="section-one-img">
+            <Image src={img1} alt="Container Image Carametal"></Image>
+          </div>
+        </section>
 
-      <section className="section-two">
-        <div className="section-two-img"></div>
+        <section className="section-two">
+          <div className="section-two-img"></div>
 
-        {data2.map((item, index) => (
-          <SectionText
-            className="section-text-wrapper"
-            key={index}
-            title={item.title}
-            paragraphs={item.paragraphs}
-          />
-        ))}
-      </section>
+          {dataSection2.map((item, index) => (
+            <SectionText
+              className="section-text-wrapper"
+              key={index}
+              title={item.title}
+              paragraphs={item.paragraphs}
+            />
+          ))}
+        </section>
+
+        <section className="section-three">
+          <div className="section-three-img">
+            <Image
+              src={img3}
+              fill
+              alt="Container Carametal"
+              className="cropped-image"
+            ></Image>
+          </div>
+
+          {dataSection3.map((item, index) => (
+            <SectionText
+              className="section-text-wrapper"
+              img={item.img}
+              key={index}
+              title={item.title}
+              paragraphs={item.paragraphs}
+            />
+          ))}
+        </section>
+      </div>
     </>
   );
 }

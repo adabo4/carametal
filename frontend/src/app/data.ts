@@ -1,4 +1,6 @@
-export const data1 = [
+import img from "../app/img/home_img/img4.jpg";
+
+export const dataSection1 = [
   {
     title: "Povrchové úpravy kontajnerov, priemyselné a potravinárske nátery",
     paragraphs: [
@@ -13,7 +15,7 @@ export const data1 = [
   },
 ];
 
-export const data2 = [
+export const dataSection2 = [
   {
     title:
       "Nátery priemyselných podláh, otryskávanie, metalizácia, výškové práce",
@@ -21,5 +23,16 @@ export const data2 = [
       "Poskytujeme špecializované náterové riešenia pre priemyselné povrchy v prostrediach spracovania potravín, ako sú výrobné haly, závody na spracovanie cukru, mliekarne a všeobecné oblasti výroby potravín.",
       "Naše pieskovacie služby poskytujú efektívne a efektívne riešenie na prípravu povrchu v rôznych priemyselných odvetviach. Táto technika je ideálna na odstraňovanie hrdze, starých náterov, nečistôt a nedokonalostí z ocele, betónu a iných materiálov. Otryskávanie je kritickým krokom pri zabezpečovaní optimálnej priľnavosti ochranných náterov a farieb.",
     ],
+  },
+];
+
+export const dataSection3 = [
+  {
+    title: "Potravinárske a protipožiarne nátery, protichemické izolácie",
+    paragraphs: [
+      "Naše protipožiarne riešenia, vrátane intumescentných a cementových náterov, ako je Pyrostop, sú navrhnuté tak, aby izolovali oceľové konštrukcie, steny a stropy pred extrémnym teplom, čím pomáhajú oddialiť zlyhanie konštrukcie v prípade požiaru.",
+      "Naše technologické zariadenie nám umožňuje ponúknuť Vám povrchovú úpravu nielen malých a stredných dielov, ale aj veľkorozmerných konštrukcií. ",
+    ],
+    img: img,
   },
 ];
