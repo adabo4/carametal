@@ -1,4 +1,4 @@
-import { Montserrat_Alternates, Inter } from "next/font/google";
+import { Montserrat_Alternates, Inter, Roboto } from "next/font/google";
 import localFont from "next/font/local";
 
 export const montserratAlt1SemiBold = localFont({
@@ -12,6 +12,14 @@ export const montserratAlt1Light = localFont({
 export const avenirLight = localFont({
   src: "../fonts/Avenir Light.ttf",
   variable: "--font-avenirLight",
+});
+
+export const roboto = Roboto({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
 });
 
 // export const montserratAlt1 = Montserrat_Alternates({

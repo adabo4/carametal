@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Route } from "next";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
 import { navbarLinks, navbarMobileLinks } from "@/lib/helpers";
 import { CiMenuBurger } from "react-icons/ci";
 import { TfiClose } from "react-icons/tfi";
-import { avenirLight, ganache, montserratAlt1SemiBold } from "@/lib/fonts";
+import { avenirLight, montserratAlt1SemiBold } from "@/lib/fonts";
 
 export default function Navbar() {
   const [show, setShow] = useState(false);

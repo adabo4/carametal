@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.css";
 import { montserratAlt1Light, montserratAlt1SemiBold } from "@/lib/fonts";
 
