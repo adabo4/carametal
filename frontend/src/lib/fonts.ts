@@ -1,4 +1,4 @@
-import { Montserrat_Alternates, Inter, Roboto } from "next/font/google";
+import { Montserrat_Alternates, Inter, Roboto, Zeyada } from "next/font/google";
 import localFont from "next/font/local";
 
 export const montserratAlt1SemiBold = localFont({
@@ -20,6 +20,14 @@ export const roboto = Roboto({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-roboto",
+});
+
+export const zeyada = Zeyada({
+  weight: ["400"],
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-zeyada",
 });
 
 // export const montserratAlt1 = Montserrat_Alternates({

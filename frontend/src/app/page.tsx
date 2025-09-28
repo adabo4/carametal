@@ -1,11 +1,11 @@
 import React from "react";
 import "./home.css";
 import Image from "next/image";
-import img1 from "./img/home_img/img1.jpg";
-import img4 from "./img/home_img/img4.jpg";
-import img3 from "./img/home_img/img3.jpg";
+import img1 from "../../public/img/home_img/img1.jpg";
+import img3 from "../../public/img/home_img/img3.jpg";
 import SectionText from "@/components/SectionText";
 import { dataSection1, dataSection2, dataSection3 } from "./data";
+import StatsSection from "@/components/Stats/StatsSection";
 
 export default function Home() {
   return (
@@ -95,6 +95,9 @@ export default function Home() {
               paragraphs={item.paragraphs}
             />
           ))}
+        </section>
+        <section className="section-stats">
+          <StatsSection></StatsSection>
         </section>
       </div>
     </>

@@ -1,4 +1,4 @@
-import img from "../app/img/home_img/img4.jpg";
+import img4 from "../../public/img/home_img/img4.jpg";
 
 export const dataSection1 = [
   {
@@ -34,7 +34,7 @@ export const dataSection3 = [
       "Naše technologické zariadenie nám umožňuje ponúknuť Vám povrchovú úpravu nielen malých a stredných dielov, ale aj veľkorozmerných konštrukcií. ",
     ],
     img: {
-      src: img,
+      src: img4,
       alt: "Fire protection and food-grade coatings",
       width: 480,
       height: 320,
