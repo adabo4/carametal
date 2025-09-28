@@ -1,0 +1,26 @@
+.container {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+
+}
+
+.box {
+    background-color: white;
+    width: 236px;
+    width: 236px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: start;
+}
+
+.title {
+    font-family: var(--font-montserratBold);
+    color: var(--sections-red);
+    font-size: 1.5em;
+    margin: 0 2em;
+}

@@ -7,6 +7,7 @@ import SectionText from "@/components/SectionText";
 import { dataSection1, dataSection2, dataSection3 } from "./data";
 import StatsSection from "@/components/Stats/StatsSection";
 import HomeSections from "@/components/HomeSections";
+import ServicesSection from "@/components/Services/ServicesSection";
 
 export default function Home() {
   return (
@@ -113,6 +114,10 @@ export default function Home() {
             btnText="Čítajte viac"
             paragraph="Vďaka rozlohe našich priestorov, jedinečnej tryskárni,  vlastnej manipulačnej technike a odborne vyškolenému personálu zabezpečíme riešenia Vašich povrchových úprav od spracovania objednávky až po dovoz tovaru."
           ></HomeSections>
+        </section>
+
+        <section className="section-services">
+          <ServicesSection></ServicesSection>
         </section>
       </div>
     </>

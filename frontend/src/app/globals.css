@@ -13,4 +13,9 @@
     --primary-color: #4bab4b;
     --sections-green: #5DA546;
     --secondary-color: rgba(0, 0, 0, 0.7);
+    --sections-red: #CE2C34;
+}
+
+body {
+    background-color: #F7F7F7;
 }
