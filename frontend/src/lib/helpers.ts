@@ -19,6 +19,13 @@ export interface SectionTextProps {
   img?: ImageProps;
 }
 
+export interface HomeSectionProps {
+  title: string;
+  subtitle: string;
+  paragraph?: string;
+  btnText: string;
+}
+
 export const navbarLinks: NavItem[] = [
   { href: "/sluzby", label: "Služby" },
   { href: "/projekty", label: "Projekty" },

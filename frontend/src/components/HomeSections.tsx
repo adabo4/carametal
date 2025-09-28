@@ -1,15 +1,20 @@
 import React from "react";
+import { HomeSectionProps } from "@/lib/helpers";
 
-export default function HomeSections() {
+export default function HomeSections({
+  title,
+  subtitle,
+  btnText,
+  paragraph,
+}: HomeSectionProps): React.JSX.Element {
   return (
     <>
-      <section className="section-header">
-        <div className="titles">
-          <h2>Expresné dodanie aj s manipuláciou</h2>
-          <h3>CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám</h3>
-        </div>
-        <button className="btn">Čítaj</button>
-      </section>
+      <div className="titles">
+        <h2>{title}</h2>
+        <h3>{subtitle}</h3>
+        {paragraph && <p>{paragraph}</p>}
+      </div>
+      <button className="btn">{btnText}</button>
     </>
   );
 }

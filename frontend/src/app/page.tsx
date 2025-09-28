@@ -6,17 +6,23 @@ import img3 from "../../public/img/home_img/img3.jpg";
 import SectionText from "@/components/SectionText";
 import { dataSection1, dataSection2, dataSection3 } from "./data";
 import StatsSection from "@/components/Stats/StatsSection";
+import HomeSections from "@/components/HomeSections";
 
 export default function Home() {
   return (
     <>
       <div className="main-container">
         <section className="section-header">
-          <div className="titles">
+          {/* <div className="titles">
             <h2>Expresné dodanie aj s manipuláciou</h2>
             <h3>CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám</h3>
           </div>
-          <button className="btn">Čítaj</button>
+          <button className="btn">Čítaj</button> */}
+          <HomeSections
+            title="Expresné dodanie aj s manipuláciou"
+            subtitle="CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám"
+            btnText="Čítaj"
+          ></HomeSections>
         </section>
 
         {/* <section className="section-one">
@@ -98,6 +104,15 @@ export default function Home() {
         </section>
         <section className="section-stats">
           <StatsSection></StatsSection>
+        </section>
+
+        <section className="section-header">
+          <HomeSections
+            title="Služby"
+            subtitle="Ponúkame služby povrchových úprav na mieru v Nitre"
+            btnText="Čítajte viac"
+            paragraph="Vďaka rozlohe našich priestorov, jedinečnej tryskárni,  vlastnej manipulačnej technike a odborne vyškolenému personálu zabezpečíme riešenia Vašich povrchových úprav od spracovania objednávky až po dovoz tovaru."
+          ></HomeSections>
         </section>
       </div>
     </>

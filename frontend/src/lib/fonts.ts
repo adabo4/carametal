@@ -8,6 +8,10 @@ export const montserratAlt1SemiBold = localFont({
 export const montserratAlt1Light = localFont({
   src: "../fonts/MontserratAlt1-Light.woff2",
 });
+export const montserratAltBold = localFont({
+  src: "../fonts/MontserratAlt1-Bold.woff2",
+  variable: "--font-montserratBold",
+});
 
 export const avenirLight = localFont({
   src: "../fonts/Avenir Light.ttf",
@@ -32,6 +36,8 @@ export const zeyada = Zeyada({
 
 // export const montserratAlt1 = Montserrat_Alternates({
 //   subsets: ["latin", "latin-ext"],
+//   style: ["normal"],
+//   display: "swap",
 //   weight: ["500", "600", "700"],
 //   variable: "--font-montserrat-alt1",
 // });

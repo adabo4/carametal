@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ConditionalNavigation from "@/components/Navbar/ConditionalNavigation";
-import { montserratAlt1SemiBold, roboto, zeyada } from "@/lib/fonts";
+import {
+  montserratAlt1SemiBold,
+  montserratAltBold,
+  roboto,
+  zeyada,
+} from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Carametal | Povrchové úpravy | Otryskávanie | Nitra",
@@ -16,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body
-        className={`${montserratAlt1SemiBold.variable} ${roboto.variable} ${zeyada.variable}`}
+        className={`${montserratAlt1SemiBold.variable} ${roboto.variable} ${zeyada.variable} ${montserratAltBold.variable}`}
       >
         <ConditionalNavigation></ConditionalNavigation>
         {children}

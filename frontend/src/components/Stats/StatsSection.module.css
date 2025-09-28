@@ -100,6 +100,12 @@
     font-size: 1.2em;
 }
 
+@media screen and (min-width: 1500px) {
+    .container {
+        margin: 0 -3em;
+    }
+}
+
 @media screen and (max-width: 1025px) {
 
     .container {
