@@ -119,6 +119,14 @@ export default function Home() {
         <section className="section-services">
           <ServicesSection></ServicesSection>
         </section>
+
+        <section className="section-header">
+          <HomeSections
+            title="Realizácie"
+            subtitle="Naše projekty"
+            paragraph="Za viac ako 30. ročné pôsobenie mal CARAMETAL spol.s.r.o možnosť realizovať nasledovné projekty."
+          ></HomeSections>
+        </section>
       </div>
     </>
   );

@@ -4,44 +4,44 @@ import styles from "./ServicesSection.module.css";
 
 const servicesData = [
   {
-    img: "/img/svg/nater.svg", // Correct: starts with / (no public)
+    img: "/img/svg/nater.svg",
     alt: "Pieskovanie a nátery kontajnerov",
     title: "Pieskovanie a nátery kontajnerov",
     width: 100,
     height: 100,
   },
   {
-    img: "/img/svg/nater2.svg", // Correct: starts with / (no public)
+    img: "/img/svg/nater2.svg",
     alt: "Priemyselné a potravinárske nátery",
     title: "Priemyselné a potravinárske nátery",
   },
   {
-    img: "/img/svg/nater3.svg", // Correct: starts with / (no public)
+    img: "/img/svg/nater3.svg",
     alt: "Expresné kalkulácie cenových ponúk",
     title: "Expresné kalkulácie cenových ponúk",
   },
   {
-    img: "/img/svg/nater4.svg", // Correct: starts with / (no public)
+    img: "/img/svg/nater4.svg",
     alt: "Profesionálny tím",
     title: "Profesionálny tím",
   },
   {
-    img: "/img/svg/nater5.svg", // Correct: starts with / (no public)
+    img: "/img/svg/nater5.svg",
     alt: "Bezpečná manipulácia modernou technikou",
     title: "Bezpečná manipulácia modernou technikou",
   },
   {
-    img: "/img/svg/nater6.svg", // Correct: starts with / (no public)
+    img: "/img/svg/nater6.svg",
     alt: "Kontrola kvality",
     title: "Kontrola kvality",
   },
   {
-    img: "/img/svg/nater7.svg", // Correct: starts with / (no public)
+    img: "/img/svg/nater7.svg",
     alt: "Výškové práce",
     title: "Výškové práce",
   },
   {
-    img: "/img/svg/nater8.svg", // Correct: starts with / (no public)
+    img: "/img/svg/nater8.svg",
     alt: "Práca v teréne",
     title: "Práca v teréne",
   },
@@ -55,7 +55,7 @@ export default function ServicesSection() {
           <div className={styles.imageContainer}>
             <Image
               src={img}
-              width={width || 60} // Some images smaller
+              width={width || 60}
               height={height || 60}
               alt={alt}
             />

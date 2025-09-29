@@ -23,7 +23,7 @@ export interface HomeSectionProps {
   title: string;
   subtitle: string;
   paragraph?: string;
-  btnText: string;
+  btnText?: string;
 }
 
 export const navbarLinks: NavItem[] = [

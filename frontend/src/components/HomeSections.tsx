@@ -14,7 +14,7 @@ export default function HomeSections({
         <h3>{subtitle}</h3>
         {paragraph && <p>{paragraph}</p>}
       </div>
-      <button className="btn">{btnText}</button>
+      {btnText && <button className="btn">{btnText}</button>}
     </>
   );
 }
