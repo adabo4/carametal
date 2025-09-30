@@ -175,6 +175,17 @@
 .section-services {}
 
 
+
+/*SECTION LOGOS*/
+
+
+
+.section-logos {
+    margin-top: 4em;
+}
+
+
+
 @media screen and (min-width: 1500px) {
 
     .main-container {
