@@ -8,6 +8,8 @@ import { dataSection1, dataSection2, dataSection3 } from "./data";
 import StatsSection from "@/components/Stats/StatsSection";
 import HomeSections from "@/components/HomeSections";
 import ServicesSection from "@/components/Services/ServicesSection";
+import Carousel from "@/components/Carousel/Carousel";
+import CarouselHorizontal from "@/components/Carousel/CarouselHorizontal";
 
 export default function Home() {
   return (
@@ -127,6 +129,8 @@ export default function Home() {
             paragraph="Za viac ako 30. ročné pôsobenie mal CARAMETAL spol.s.r.o možnosť realizovať nasledovné projekty."
           ></HomeSections>
         </section>
+
+        <CarouselHorizontal></CarouselHorizontal>
       </div>
     </>
   );
