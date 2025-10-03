@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ConditionalNavigation from "@/components/Navbar/ConditionalNavigation";
 import {
+  montserratAlt1Light,
   montserratAlt1SemiBold,
   montserratAltBold,
   roboto,
@@ -21,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body
-        className={`${montserratAlt1SemiBold.variable} ${roboto.variable} ${zeyada.variable} ${montserratAltBold.variable}`}
+        className={`${montserratAlt1SemiBold.variable} ${roboto.variable} ${zeyada.variable} ${montserratAltBold.variable} ${montserratAlt1Light.variable}`}
       >
         <ConditionalNavigation></ConditionalNavigation>
         {children}

@@ -1,0 +1,31 @@
+.footer {
+    display: flex;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-monserratSemiBold), 'sans-serif';
+}
+
+.logo-container p {
+    font-family: var(--font-monserratSemiBold);
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.logo-title {
+    font-family: var(--font-montserratBold);
+}
+
+.footer-info-title {
+    font-family: var(--font-monserratBold);
+    font-weight: 700;
+    color: var(--sections-red);
+    font-size: 1.5em;
+
+}

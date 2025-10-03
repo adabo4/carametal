@@ -11,6 +11,7 @@ import ServicesSection from "@/components/Services/ServicesSection";
 import Carousel from "@/components/Carousel/Carousel";
 import CarouselHorizontal from "@/components/Carousel/CarouselHorizontal";
 import PartnersLogos from "@/components/PartnersLogos/PartnersLogos";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -136,6 +137,8 @@ export default function Home() {
         <section className="section-logos">
           <PartnersLogos></PartnersLogos>
         </section>
+
+        <Footer></Footer>
       </div>
     </>
   );

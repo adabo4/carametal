@@ -7,6 +7,7 @@ export const montserratAlt1SemiBold = localFont({
 });
 export const montserratAlt1Light = localFont({
   src: "../fonts/MontserratAlt1-Light.woff2",
+  variable: "--font-montserratAltLight",
 });
 export const montserratAltBold = localFont({
   src: "../fonts/MontserratAlt1-Bold.woff2",
