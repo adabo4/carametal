@@ -13,24 +13,17 @@
     margin-top: 2em;
     gap: 2rem;
     max-width: 1200px;
-    /* center content in a fixed container */
     width: 100%;
     justify-content: center;
-    /* center the columns */
-
-
-
 }
 
 .container::before {
     content: "";
     position: absolute;
     top: -12px;
-    /* how high above the content the line sits */
     left: 50%;
     transform: translateX(-50%);
     width: min(1100px, 90%);
-    /* keeps it centered & nicely sized */
     height: 2px;
     background: black;
 }
@@ -44,18 +37,15 @@
     flex-direction: column;
     font-family: var(--font-monserratSemiBold), 'sans-serif';
     align-items: flex-start;
-
 }
 
 .container>div {
     width: 350px;
     display: flex;
     align-items: center;
-    border: 1px solid blue;
-
 }
 
-/* left-align text by default */
+
 .footer-info,
 .footer-info>div,
 .logo-container {
@@ -87,7 +77,6 @@
 .footer-info div {
     margin: 1em 0;
     flex: 1 0 0;
-
 }
 
 .btn {
@@ -149,29 +138,24 @@
         width: 100%;
         align-items: center;
         justify-content: center;
-
     }
 
     .footer-info {
         align-items: center;
-        /* center the block itself */
     }
 
     .footer-info>div {
         width: 25%;
         max-width: 700px;
-        /* readable line length */
         text-align: left;
     }
 
     .logo-container {
         align-items: center;
-        /* logo block centered as a box */
     }
 
     .logo-container p {
         text-align: center;
-        /* text still starts at left edge */
         width: 100%;
         max-width: 700px;
     }
@@ -179,9 +163,6 @@
     .btn {
         align-self: center;
     }
-
-
-
 }
 
 @media screen and (max-width: 600px) {
