@@ -8,6 +8,7 @@ import {
   roboto,
   zeyada,
 } from "@/lib/fonts";
+import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Carametal | Povrchové úpravy | Otryskávanie | Nitra",
@@ -26,6 +27,7 @@ export default function RootLayout({
       >
         <ConditionalNavigation></ConditionalNavigation>
         {children}
+        <Footer></Footer>
       </body>
     </html>
   );

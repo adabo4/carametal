@@ -137,8 +137,6 @@ export default function Home() {
         <section className="section-logos">
           <PartnersLogos></PartnersLogos>
         </section>
-
-        <Footer></Footer>
       </div>
     </>
   );
