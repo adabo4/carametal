@@ -17,8 +17,8 @@ export default function SectionText({
         <Image
           className="title-img"
           src={logoImg.src}
-          width={80}
-          height={80}
+          width={70}
+          height={70}
         ></Image>
       )}
       <h4 className={className}>{title}</h4>

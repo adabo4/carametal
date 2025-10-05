@@ -63,7 +63,7 @@
     width: 350px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .section-one-title,
@@ -82,7 +82,6 @@
     font-weight: 700;
     line-height: 1.2;
     text-align: left;
-
 }
 
 .title-img {
