@@ -17,6 +17,14 @@ export interface SectionTextProps {
   listItems?: string[];
   className?: string;
   img?: ImageProps;
+  logoImg?: ImageProps;
+}
+export interface ServiceTextProps {
+  title: string;
+  paragraphs: string[];
+  listItems?: string[];
+  className?: string;
+  img?: ImageProps;
 }
 
 export interface HomeSectionProps {

@@ -62,7 +62,7 @@ export default function Home() {
         <section className="section-one">
           {dataSection1.map((item, index) => (
             <SectionText
-              className="section-text-wrapper"
+              className="section-title"
               key={index}
               title={item.title}
               paragraphs={item.paragraphs}
@@ -79,7 +79,7 @@ export default function Home() {
 
           {dataSection2.map((item, index) => (
             <SectionText
-              className="section-text-wrapper"
+              className="section-title"
               key={index}
               title={item.title}
               paragraphs={item.paragraphs}
@@ -99,7 +99,7 @@ export default function Home() {
 
           {dataSection3.map((item, index) => (
             <SectionText
-              className="section-text-wrapper"
+              className="section-title"
               img={item.img}
               key={index}
               title={item.title}

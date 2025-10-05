@@ -9,10 +9,19 @@ export default function SectionText({
   listItems,
   className,
   img,
+  logoImg,
 }: SectionTextProps) {
   return (
-    <div className={className}>
-      <h4 className="section-title">{title}</h4>
+    <div className="section-text-wrapper">
+      {logoImg && (
+        <Image
+          className="title-img"
+          src={logoImg.src}
+          width={80}
+          height={80}
+        ></Image>
+      )}
+      <h4 className={className}>{title}</h4>
       {img && (
         <div className="section-image">
           <Image
