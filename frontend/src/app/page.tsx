@@ -3,15 +3,14 @@ import "./home.css";
 import Image from "next/image";
 import img1 from "../../public/img/home_img/img1.jpg";
 import img3 from "../../public/img/home_img/img3.jpg";
-import SectionText from "@/components/SectionText";
 import { dataSection1, dataSection2, dataSection3 } from "./data";
 import StatsSection from "@/components/Stats/StatsSection";
-import HomeSections from "@/components/HomeSections";
 import ServicesSection from "@/components/Services/ServicesSection";
 import Carousel from "@/components/Carousel/Carousel";
 import CarouselHorizontal from "@/components/Carousel/CarouselHorizontal";
 import PartnersLogos from "@/components/PartnersLogos/PartnersLogos";
-import Footer from "@/components/Footer/Footer";
+import HomeSections from "@/components/HomeSections/HomeSections";
+import SectionText from "@/components/HomeSections/SectionText";
 
 export default function Home() {
   return (
@@ -24,6 +23,7 @@ export default function Home() {
           </div>
           <button className="btn">Čítaj</button> */}
           <HomeSections
+            subtitleWeight="bold"
             title="Expresné dodanie aj s manipuláciou"
             subtitle="CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám"
             btnText="Čítaj"
@@ -113,6 +113,7 @@ export default function Home() {
 
         <section className="section-header">
           <HomeSections
+            subtitleWeight="bold"
             title="Služby"
             subtitle="Ponúkame služby povrchových úprav na mieru v Nitre"
             btnText="Čítajte viac"
@@ -126,6 +127,7 @@ export default function Home() {
 
         <section className="section-header">
           <HomeSections
+            subtitleWeight="bold"
             title="Realizácie"
             subtitle="Naše projekty"
             paragraph="Za viac ako 30. ročné pôsobenie mal CARAMETAL spol.s.r.o možnosť realizovať nasledovné projekty."
