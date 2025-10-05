@@ -84,6 +84,11 @@
         margin-top: 1em;
     }
 
+    .subtitle.wide,
+    .subtitle.normal {
+        width: 100%;
+    }
+
     .btn {
         height: 50px;
         width: 150px;
