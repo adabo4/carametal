@@ -6,7 +6,7 @@
 
 .titles h2 {
     color: var(--sections-red);
-    font-family: var(--font-monserratSemiBold);
+    font-family: var(--font-montserratBold);
     font-size: 1.6em;
     font-weight: bold;
 
@@ -14,27 +14,26 @@
 
 .titles h3 {
     color: var(--sections-green);
-    font-size: 2.em;
+    font-size: 3.1em;
     font-family: var(--font-monserratSemiBold);
     width: 580px;
-
     line-height: 1.2;
 }
 
 .subtitle.normal {
-    width: 580px;
+    width: 500px;
 }
 
 .subtitle.wide {
-    width: 700px;
+    width: 650px;
 }
 
 .subtitle.light {
-    font-weight: 400;
+    font-family: var(--font-monserratSemiBold);
 }
 
 .subtitle.bold {
-    font-weight: 600;
+    font-family: var(--font-montserratBold);
 }
 
 

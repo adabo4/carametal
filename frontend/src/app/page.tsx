@@ -27,6 +27,7 @@ export default function Home() {
             title="Expresné dodanie aj s manipuláciou"
             subtitle="CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám"
             btnText="Čítaj"
+            subtitleWidth="normal"
           ></HomeSections>
         </section>
 

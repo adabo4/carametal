@@ -26,6 +26,7 @@ export default function Services() {
             subtitle="Poskytujeme komplexné riešenia povrchových úprav"
             paragraph="Poskytujeme rýchle, kvalitné a profesionáne služby."
             subtitleWidth="wide"
+            subtitleWeight="light"
           ></HomeSections>
         </div>
 
