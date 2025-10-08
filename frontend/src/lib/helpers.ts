@@ -34,6 +34,7 @@ export interface HomeSectionProps {
   btnText?: string;
   subtitleWidth?: "normal" | "wide";
   subtitleWeight?: "light" | "bold";
+  paragraphWidth?: string;
 }
 
 export const navbarLinks: NavItem[] = [

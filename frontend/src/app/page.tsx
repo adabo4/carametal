@@ -128,6 +128,7 @@ export default function Home() {
 
         <section className="section-header">
           <HomeSections
+            paragraphWidth="450px"
             subtitleWeight="bold"
             title="Realizácie"
             subtitle="Naše projekty"
