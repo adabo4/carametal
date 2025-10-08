@@ -1,3 +1,4 @@
+import Gallery from "@/components/Gallery/Gallery";
 import HomeSections from "@/components/HomeSections/HomeSections";
 import React from "react";
 
@@ -15,6 +16,8 @@ export default function Projects() {
             paragraphWidth="93%"
           ></HomeSections>
         </div>
+
+        <Gallery></Gallery>
       </div>
     </>
   );
