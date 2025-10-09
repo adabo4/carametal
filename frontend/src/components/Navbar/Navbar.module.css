@@ -18,9 +18,12 @@
 .navbar {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-evenly;
     cursor: pointer;
     position: relative;
+    /* background-color: rgb(229, 229, 229);
+    height: 150px; */
 
 }
 
