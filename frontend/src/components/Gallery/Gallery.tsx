@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./Gallery.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { FiChevronLeft } from "react-icons/fi";
 
@@ -79,6 +79,10 @@ export default function Gallery() {
   const [index, setIndex] = useState(0.3);
   const [imageOpacity, setImageOpacity] = useState(1);
 
+  // Touch/swipe states
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
   function nextImage() {
     setImageOpacity(0.3);
 
@@ -118,6 +122,57 @@ export default function Gallery() {
     }, 300);
   }
 
+  // Swipe detection constants
+  const minSwipeDistance = 50;
+
+  // Touch event handlers
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Reset touch end
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextImage(); // Swipe left = next image
+    } else if (isRightSwipe) {
+      prevImage(); // Swipe right = previous image
+    }
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      // Only work when gallery is open (not hidden)
+      if (showImage !== "hidden") {
+        if (event.key === "ArrowRight") {
+          nextImage();
+        } else if (event.key === "ArrowLeft") {
+          prevImage();
+        } else if (event.key === "Escape") {
+          setShowImage("hidden");
+        }
+      }
+    };
+
+    // Add event listener
+    window.addEventListener("keydown", handleKeyPress);
+
+    // Cleanup function to remove event listener
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [showImage, index]); // Dependencies: re-run when showImage or index changes
+
   return (
     <div className={styles["grid-container"]}>
       {galleryImages.map((image, index) => (
@@ -136,7 +191,10 @@ export default function Gallery() {
       ))}
 
       <div
-        className={`fixed h-screen w-full left-0 top-0 py-40 md:py-28 lg:py-10 px-5 lg:px-40 bg-white flex items-center z-10 ${showImage}`}
+        className={`fixed h-screen w-full left-0 top-0 py-40 md:py-28 lg:py-10 px-5 lg:px-40 bg-white flex max-[980px]:flex-col items-center z-10 ${showImage}`}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
         <div className={styles["left-arrow"]} onClick={prevImage}>
           <FiChevronLeft className="w-10 h-10"></FiChevronLeft>
@@ -161,7 +219,11 @@ export default function Gallery() {
         >
           <AiOutlineClose className="w-10 h-10"></AiOutlineClose>
         </div>
-        <h5 className="text-4xl self-start my-10">{title}</h5>
+        <h5
+          className={`text-4xl self-start my-10 max-[980px]:self-center ${styles.headline}`}
+        >
+          {title}
+        </h5>
       </div>
     </div>
   );
