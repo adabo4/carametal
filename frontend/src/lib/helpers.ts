@@ -41,8 +41,9 @@ export const navbarLinks: NavItem[] = [
   { href: "/sluzby", label: "Služby" },
   { href: "/projekty", label: "Projekty" },
   { href: "/o-nas", label: "O nás" },
+  { href: "/kontakt", label: "Kontakt" },
   { href: "/kariera", label: "Kariéra" },
-  { href: "/kontakt", label: "Kontaktuje nás" },
+  { href: "/kontakt", label: "Kontaktujte nás" },
 ];
 export const navbarMobileLinks: NavItem[] = [
   { href: "/sluzby", label: "Služby" },
