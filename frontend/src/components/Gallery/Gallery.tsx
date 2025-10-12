@@ -12,31 +12,63 @@ import { AiOutlineClose } from "react-icons/ai";
 const galleryImages = [
   {
     src: "/img/gallery-img/img1.jpg",
-    alt: "Image 1",
+    alt: "Horská dráha Tulireki",
   },
   {
     src: "/img/gallery-img/img2.jpg",
-    alt: "Image 2",
+    alt: "Most Apollo",
   },
   {
     src: "/img/gallery-img/img3.jpg",
-    alt: "Image 3",
+    alt: "FŠ Nitra",
   },
   {
     src: "/img/gallery-img/img4.jpg",
-    alt: "Image 4",
+    alt: "Športová hala Nitra",
   },
   {
     src: "/img/gallery-img/img5.jpg",
-    alt: "Image 5",
+    alt: "Kontajnery Strabag",
   },
   {
     src: "/img/gallery-img/img6.jpg",
-    alt: "Image 6",
+    alt: "ČS Aral",
   },
   {
     src: "/img/gallery-img/img7.jpg",
-    alt: "Image 7",
+    alt: "Nádrže Považský Cukor",
+  },
+  {
+    src: "/img/gallery-img/img8.jpg",
+    alt: "Most Nitra",
+  },
+  {
+    src: "/img/gallery-img/img9.jpg",
+    alt: "Bilboardy",
+  },
+  {
+    src: "/img/gallery-img/img10.jpg",
+    alt: "Nadrozmerné kontajnery 15m",
+  },
+  {
+    src: "/img/gallery-img/img11.jpg",
+    alt: "Poľná kuchyňa",
+  },
+  {
+    src: "/img/gallery-img/img12.jpg",
+    alt: "Poľnohospodárska technika",
+  },
+  {
+    src: "/img/gallery-img/img13.jpg",
+    alt: "Cyklotrasa Jaslovské Bohunice",
+  },
+  {
+    src: "/img/gallery-img/img14.jpg",
+    alt: "Nádrže",
+  },
+  {
+    src: "/img/gallery-img/img15.jpg",
+    alt: "Vodojemy",
   },
 ];
 
@@ -99,7 +131,7 @@ export default function Gallery() {
             setIndex(index);
           }}
         >
-          <Image src={image.src} alt={image.alt} width={1000} height={800} />
+          <Image src={image.src} alt={image.alt} width={500} height={500} />
         </div>
       ))}
 
@@ -129,7 +161,7 @@ export default function Gallery() {
         >
           <AiOutlineClose className="w-10 h-10"></AiOutlineClose>
         </div>
-        <h5 className="text-4xl self-start">{title}</h5>
+        <h5 className="text-4xl self-start my-10">{title}</h5>
       </div>
     </div>
   );
