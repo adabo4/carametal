@@ -1,0 +1,112 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 2rem;
+}
+
+.nameInputContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.input {
+    padding: 0.5rem;
+    border: 1px solid black;
+    font-size: 1rem;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--sections-green, #5DA546);
+    box-shadow: 0 0 0 2px rgba(93, 165, 70, 0.2);
+}
+
+.textarea {
+    padding: 0.5rem;
+    border: 1px solid black;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: var(--sections-green, #5DA546);
+    box-shadow: 0 0 0 2px rgba(93, 165, 70, 0.2);
+}
+
+.error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.submitButton {
+    padding: 1rem 2rem;
+    background-color: var(--sections-green, black);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    align-self: flex-end;
+}
+
+.submitButton:hover {
+    background-color: var(--sections-green-hover, #4a8f3a);
+}
+
+.submitButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 550px) {
+
+    .form {
+        margin: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .nameInputContainer {
+        flex-direction: column;
+    }
+
+    .input {
+        width: 300px;
+        box-sizing: border-box;
+    }
+
+    .textarea {
+        width: 300px;
+        box-sizing: border-box;
+    }
+
+    .submitButton {
+        align-self: unset;
+    }
+
+}
+
+@media screen and (max-width: 350px) {
+
+
+    .input {
+        width: 100%;
+    }
+
+    .textarea {
+        width: 100%;
+    }
+
+}

@@ -4,6 +4,7 @@ import { FiMapPin } from "react-icons/fi";
 import { CiPhone } from "react-icons/ci";
 import { TfiEmail } from "react-icons/tfi";
 import "../home.css";
+import Form from "@/components/Form/Form";
 
 export default function ContactUs() {
   return (
@@ -32,6 +33,7 @@ export default function ContactUs() {
           <p>info@carametal.sk</p>
         </div>
       </div>
+      <Form></Form>
     </div>
   );
 }
