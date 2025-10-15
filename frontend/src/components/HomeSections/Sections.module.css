@@ -25,7 +25,11 @@
 }
 
 .subtitle.wide {
-    width: 650px;
+    width: 680px;
+}
+
+.subtitle.wide-max {
+    width: 800px;
 }
 
 .subtitle.light {
