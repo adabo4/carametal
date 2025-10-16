@@ -6,13 +6,9 @@ import img3 from "../../public/img/home_img/img3.jpg";
 import { dataSection1, dataSection2, dataSection3 } from "./data";
 import StatsSection from "@/components/Stats/StatsSection";
 import ServicesSection from "@/components/Services/ServicesSection";
-import Carousel from "@/components/Carousel/Carousel";
-import CarouselHorizontal from "@/components/Carousel/CarouselHorizontal";
 import PartnersLogos from "@/components/PartnersLogos/PartnersLogos";
 import HomeSections from "@/components/HomeSections/HomeSections";
 import SectionText from "@/components/HomeSections/SectionText";
-import CarouselSwipe from "@/components/Carousel/CarouselSwipe";
-import CarouselSwipeNew from "@/components/Carousel/CarouselSwipeNew";
 import CarouselHorizontalNew from "@/components/Carousel/CarouselHorizontalNew";
 
 export default function Home() {
