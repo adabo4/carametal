@@ -1,0 +1,48 @@
+.form-container {
+    margin: 4rem;
+    width: 38%;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.image {
+    width: 600px;
+    height: 600px;
+    margin-right: 1rem;
+}
+
+@media screen and (max-width: 1100px) {
+    .wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-container {
+        width: 50%;
+
+    }
+
+    .image {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 990px) {
+
+    .form-container {
+        width: 80%;
+    }
+
+    .wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .image {
+        width: 80%;
+        height: 80%;
+
+    }
+}

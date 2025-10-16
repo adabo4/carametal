@@ -1,4 +1,13 @@
 import { StaticImageData } from "next/image";
+
+export interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber?: string;
+  textMessage: string;
+}
+
 export interface NavItem {
   href: string;
   label: string;

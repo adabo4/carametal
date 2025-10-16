@@ -19,3 +19,32 @@
 body {
     background-color: #F7F7F7;
 }
+
+/* Override react-international-phone styles */
+.react-international-phone-input-container {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid black !important;
+    padding: 0 !important;
+    margin-bottom: 1rem !important;
+}
+
+.react-international-phone-country-selector-button {
+    background-color: transparent !important;
+    border: none !important;
+    border-right: 1px solid black !important;
+    padding-right: 8px !important;
+    margin-right: 8px !important;
+}
+
+.react-international-phone-flag {
+    width: 16px !important;
+    height: 12px !important;
+}
+
+.react-international-phone-input {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding-bottom: 0.5rem !important;
+}

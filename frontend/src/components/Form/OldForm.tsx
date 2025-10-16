@@ -2,9 +2,15 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./Form.module.css";
-import { FormData } from "@/lib/helpers";
 
-export default function Form() {
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  textMessage: string;
+}
+
+export default function OldForm() {
   const {
     register,
     handleSubmit,
@@ -17,7 +23,8 @@ export default function Form() {
 
   const onSubmit: SubmitHandler<FormData> = data => {
     console.log("Form data:", data);
-    // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
+    // Here you can send the data to your backend
+    // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
     reset();
   };
 
