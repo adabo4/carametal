@@ -21,12 +21,14 @@ export default function Navbar() {
         </div>
         <button className={styles["btn"]}>Kontaktujte nás</button>
         <ul
-          className={`${styles["nav-items-right"]} ${show ? styles.show : ""}`}
+          className={`${styles["nav-items-right"]} ${show ? styles.show : styles.hide}`}
         >
           {show
             ? navbarMobileLinks.map(({ href, label }) => (
                 <li key={href} className={styles.navFont}>
-                  <Link href={href as Route}>{label}</Link>
+                  <Link onClick={() => setShow(false)} href={href as Route}>
+                    {label}
+                  </Link>
                 </li>
               ))
             : navbarLinks.map(({ href, label }) => (
