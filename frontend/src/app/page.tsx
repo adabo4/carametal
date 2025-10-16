@@ -11,6 +11,9 @@ import CarouselHorizontal from "@/components/Carousel/CarouselHorizontal";
 import PartnersLogos from "@/components/PartnersLogos/PartnersLogos";
 import HomeSections from "@/components/HomeSections/HomeSections";
 import SectionText from "@/components/HomeSections/SectionText";
+import CarouselSwipe from "@/components/Carousel/CarouselSwipe";
+import CarouselSwipeNew from "@/components/Carousel/CarouselSwipeNew";
+import CarouselHorizontalNew from "@/components/Carousel/CarouselHorizontalNew";
 
 export default function Home() {
   return (
@@ -136,7 +139,8 @@ export default function Home() {
           ></HomeSections>
         </section>
 
-        <CarouselHorizontal></CarouselHorizontal>
+        {/* <CarouselHorizontal></CarouselHorizontal> */}
+        <CarouselHorizontalNew></CarouselHorizontalNew>
 
         <section className="section-logos">
           <PartnersLogos></PartnersLogos>

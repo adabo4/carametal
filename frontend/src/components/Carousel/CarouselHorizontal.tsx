@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./CarouselHorizontal.module.css";
 import Image from "next/image";
 
@@ -32,7 +32,20 @@ const projectData = [
 
 export default function CarouselHorizontal() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const imagesPerView = 3;
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const imagesPerView = isMobile ? 1 : 3;
   const maxSlide = projectData.length - imagesPerView;
 
   const nextSlide = () => {
