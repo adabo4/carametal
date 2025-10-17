@@ -52,7 +52,7 @@ export default function Services() {
           ></div>
         </section>
 
-        <section className={styles["section-services"]}>
+        <section className={`${styles["section-services"]} ${styles.reverse}`}>
           <div
             className={styles["img-container"]}
             style={
@@ -94,7 +94,7 @@ export default function Services() {
           ></div>
         </section>
 
-        <section className={styles["section-services"]}>
+        <section className={`${styles["section-services"]} ${styles.reverse}`}>
           <div
             className={styles["img-container"]}
             style={
@@ -135,7 +135,7 @@ export default function Services() {
           ></div>
         </section>
 
-        <section className={styles["section-services"]}>
+        <section className={`${styles["section-services"]} ${styles.reverse}`}>
           <div
             className={styles["img-container"]}
             style={
@@ -177,7 +177,7 @@ export default function Services() {
           ></div>
         </section>
 
-        <section className={styles["section-services"]}>
+        <section className={`${styles["section-services"]} ${styles.reverse}`}>
           <div
             className={styles["img-container"]}
             style={
