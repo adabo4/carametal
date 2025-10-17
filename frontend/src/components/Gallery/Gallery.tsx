@@ -176,22 +176,25 @@ export default function Gallery() {
   return (
     <div className={styles["grid-container"]}>
       {galleryImages.map((image, index) => (
-        <div
-          key={index}
-          className={styles["img-container"]}
-          onClick={() => {
-            setShowImage("");
-            setGalleryImage(image.src);
-            setTitle(image.alt);
-            setIndex(index);
-          }}
-        >
-          <Image src={image.src} alt={image.alt} width={500} height={500} />
+        <div>
+          <div
+            key={index}
+            className={styles["img-container"]}
+            onClick={() => {
+              setShowImage("");
+              setGalleryImage(image.src);
+              setTitle(image.alt);
+              setIndex(index);
+            }}
+          >
+            <Image src={image.src} alt={image.alt} width={500} height={500} />
+          </div>
+          <p className={styles["img-title"]}>{image.alt}</p>
         </div>
       ))}
 
       <div
-        className={`fixed h-screen w-full left-0 top-0 py-40 md:py-28 lg:py-10 px-5 lg:px-40 bg-white flex max-[980px]:flex-col items-center z-10 ${showImage}`}
+        className={`fixed h-screen w-full left-0 top-0 py-40 md:py-28 lg:py-10 px-5  bg-white flex max-[980px]:flex-col items-center z-10 ${styles.galleryPadding} ${showImage}`}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
