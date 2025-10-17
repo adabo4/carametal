@@ -38,7 +38,7 @@ export default function CareerForm() {
         {errors.firstName && (
           <span className={styles.error}>{errors.firstName.message}</span>
         )}
-        <label>Priezvisko</label>
+        <label className={styles.label}>Priezvisko</label>
         <input
           type="text"
           className={styles.input}
@@ -53,27 +53,30 @@ export default function CareerForm() {
         {errors.lastName && (
           <span className={styles.error}>{errors.lastName.message}</span>
         )}
-        <label>Email</label>
+        <label className={styles.label}>Email</label>
         <input
           type="text"
           className={styles.input}
           {...register("email", {
-            required: "Email is required",
+            required: "Email je povinný",
             pattern: {
               value: /^\S+@\S+$/i,
-              message: "Invalid email address",
+              message: "Neplatný mail",
             },
           })}
         />
         {errors.email && (
           <span className={styles.error}>{errors.email.message}</span>
         )}
-        <label>Telefón</label>
+        <label className={styles.label}>Telefón</label>
         <PhoneInput
           defaultCountry="sk"
           value={phone}
           onChange={(phone: string) => setPhone(phone)}
         />
+        <button type="submit" className={styles.submitBtn}>
+          Submit
+        </button>
       </form>
     </>
   );
