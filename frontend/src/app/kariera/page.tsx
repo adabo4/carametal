@@ -28,6 +28,13 @@ export default function Career() {
           alt="Career Image"
         ></Image>
       </div>
+      <div className={styles.positions}>
+        <h2>Voľné pracovné pozície</h2>
+        <div>
+          <p>Vozíčkar</p>
+          <p>Lakýrnik</p>
+        </div>
+      </div>
     </div>
   );
 }
