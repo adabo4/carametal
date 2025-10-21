@@ -1,5 +1,14 @@
 import { StaticImageData } from "next/image";
 
+export interface GalleryImage {
+  src: string;
+  alt?: string;
+}
+export interface GalleryImagesProps {
+  images: GalleryImage[];
+  className?: string;
+}
+
 export interface FormData {
   firstName: string;
   lastName: string;

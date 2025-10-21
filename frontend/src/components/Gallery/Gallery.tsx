@@ -6,8 +6,8 @@ import styles from "./Gallery.module.css";
 import { useState, useEffect } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { FiChevronLeft } from "react-icons/fi";
-
 import { AiOutlineClose } from "react-icons/ai";
+import { GalleryImage, GalleryImagesProps } from "@/lib/helpers";
 
 const galleryImages = [
   {
@@ -72,8 +72,8 @@ const galleryImages = [
   },
 ];
 
-export default function Gallery() {
-  const [galleryImage, setGalleryImage] = useState("/img/gallery-img/img1.jpg");
+export default function Gallery({ images }: GalleryImagesProps) {
+  const [galleryImage, setGalleryImage] = useState(images[0].src);
   const [title, setTitle] = useState("");
   const [showImage, setShowImage] = useState("hidden");
   const [index, setIndex] = useState(0.3);
@@ -87,14 +87,14 @@ export default function Gallery() {
     setImageOpacity(0.3);
 
     setTimeout(() => {
-      if (index + 1 === galleryImages.length) {
+      if (index + 1 === images.length) {
         setIndex(0);
-        setGalleryImage(galleryImages[0].src);
-        setTitle(galleryImages[0].alt);
+        setGalleryImage(images[0].src);
+        setTitle(images[0].alt);
       } else {
         setIndex(index + 1);
-        setGalleryImage(galleryImages[index + 1].src);
-        setTitle(galleryImages[index + 1].alt);
+        setGalleryImage(images[index + 1].src);
+        setTitle(images[index + 1].alt);
       }
 
       setTimeout(() => {
@@ -107,13 +107,13 @@ export default function Gallery() {
 
     setTimeout(() => {
       if (index === 0) {
-        setIndex(galleryImages.length - 1);
-        setGalleryImage(galleryImages[galleryImages.length - 1].src);
-        setTitle(galleryImages[galleryImages.length - 1].alt);
+        setIndex(images.length - 1);
+        setGalleryImage(images[images.length - 1].src);
+        setTitle(images[images.length - 1].alt);
       } else {
         setIndex(index - 1);
-        setGalleryImage(galleryImages[index - 1].src);
-        setTitle(galleryImages[index - 1].alt);
+        setGalleryImage(images[index - 1].src);
+        setTitle(images[index - 1].alt);
       }
 
       setTimeout(() => {
@@ -175,7 +175,7 @@ export default function Gallery() {
 
   return (
     <div className={styles["grid-container"]}>
-      {galleryImages.map((image, index) => (
+      {images.map((image, index) => (
         <div>
           <div
             key={index}

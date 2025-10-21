@@ -3,6 +3,47 @@ import React from "react";
 import styles from "./About.module.css";
 import SectionText from "@/components/HomeSections/SectionText";
 import Image from "next/image";
+import Gallery from "@/components/Gallery/Gallery";
+import { GalleryImage } from "@/lib/helpers";
+
+const galleryImages: GalleryImage[] = [
+  {
+    src: "/img/certificates-img/img1.jpg",
+    alt: "Hempel",
+  },
+  {
+    src: "/img/certificates-img/img2.jpg",
+    alt: "Jotun",
+  },
+  {
+    src: "/img/certificates-img/img3.jpg",
+    alt: "Sigma Coatings",
+  },
+  {
+    src: "/img/certificates-img/img4.jpg",
+    alt: "Perge International",
+  },
+  {
+    src: "/img/certificates-img/img5.jpg",
+    alt: "Pregna",
+  },
+  {
+    src: "/img/certificates-img/img6.jpg",
+    alt: "Dunamenti",
+  },
+  {
+    src: "/img/certificates-img/img7.jpg",
+    alt: "Lankwitzer Lackfabrik",
+  },
+  {
+    src: "/img/certificates-img/img8.jpg",
+    alt: "Geholit+wiemer",
+  },
+  {
+    src: "/img/certificates-img/img9.jpg",
+    alt: "Dualcom",
+  },
+];
 
 export default function AboutUs() {
   return (
@@ -96,6 +137,8 @@ export default function AboutUs() {
           <Image fill className={styles.img} src="/img/building.jpg"></Image>
         </div>
       </section>
+
+      <Gallery images={galleryImages}></Gallery>
     </div>
   );
 }
