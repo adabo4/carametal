@@ -21,7 +21,7 @@ export interface ImageProps {
 }
 
 export interface SectionTextProps {
-  title: string;
+  title?: string;
   paragraphs: string[];
   listItems?: string[];
   className?: string;

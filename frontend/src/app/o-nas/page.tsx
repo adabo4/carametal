@@ -1,6 +1,8 @@
 import HomeSections from "@/components/HomeSections/HomeSections";
 import React from "react";
 import styles from "./About.module.css";
+import SectionText from "@/components/HomeSections/SectionText";
+import Image from "next/image";
 
 export default function AboutUs() {
   return (
@@ -68,6 +70,32 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
+
+      <section className={styles["section-services"]}>
+        <div className={styles["services-text-wrapper"]}>
+          <div>
+            <h2 className={styles.title}>Naše ciele</h2>
+            <h3 className={styles.subtitle}>
+              Neustále inovácie a nová tryskáreň
+            </h3>
+          </div>
+          <p className={styles["services-text"]}>
+            V roku 2019 sme začali budovať novú tryskáreň, ktorá je vybavená
+            koľajnicami pre praktickú manipuláciu s kontajnermi.
+          </p>
+          <p className={styles["services-text"]}>
+            Naša tryskáreň je schopná prevádzky i za nepriaznivých
+            poveternostných podmienok, uľahčuje manipuláciu, ako i nakladanie
+            kontajnerov na kamión a umožňuje nám vybaviť klientsku objednávku v
+            rekordne krátkom čase. Takmer nepretržitá prevádzka, prísne dodržané
+            normy a ochrana povrchov za každého počasia z nás robia toho
+            správneho partnera pre Váš biznis.
+          </p>
+        </div>
+        <div className={styles["services-img"]}>
+          <Image fill className={styles.img} src="/img/building.jpg"></Image>
+        </div>
+      </section>
     </div>
   );
 }
