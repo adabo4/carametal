@@ -90,11 +90,11 @@ export default function Gallery({ images }: GalleryImagesProps) {
       if (index + 1 === images.length) {
         setIndex(0);
         setGalleryImage(images[0].src);
-        setTitle(images[0].alt);
+        setTitle(images[0].alt || "");
       } else {
         setIndex(index + 1);
         setGalleryImage(images[index + 1].src);
-        setTitle(images[index + 1].alt);
+        setTitle(images[index + 1].alt || "");
       }
 
       setTimeout(() => {
@@ -109,11 +109,11 @@ export default function Gallery({ images }: GalleryImagesProps) {
       if (index === 0) {
         setIndex(images.length - 1);
         setGalleryImage(images[images.length - 1].src);
-        setTitle(images[images.length - 1].alt);
+        setTitle(images[images.length - 1].alt || "");
       } else {
         setIndex(index - 1);
         setGalleryImage(images[index - 1].src);
-        setTitle(images[index - 1].alt);
+        setTitle(images[index - 1].alt || "");
       }
 
       setTimeout(() => {
@@ -183,7 +183,7 @@ export default function Gallery({ images }: GalleryImagesProps) {
             onClick={() => {
               setShowImage("");
               setGalleryImage(image.src);
-              setTitle(image.alt);
+              setTitle(image.alt || "");
               setIndex(index);
             }}
           >
