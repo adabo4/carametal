@@ -5,6 +5,7 @@ import SectionText from "@/components/HomeSections/SectionText";
 import Image from "next/image";
 import Gallery from "@/components/Gallery/Gallery";
 import { GalleryImage } from "@/lib/helpers";
+import SwipeCarousel from "@/components/CarouselSlide/SwipeCarousel";
 
 const galleryImages: GalleryImage[] = [
   {
@@ -58,6 +59,20 @@ export default function AboutUs() {
         ></HomeSections>
       </section>
 
+      <SwipeCarousel
+        images={[
+          { src: "/img/slider/img1.jpg", alt: "Hempel" },
+          { src: "/img/slider/img2.jpg", alt: "Jotun" },
+          { src: "/img/slider/img3.jpg", alt: "Sigma Coatings" },
+          { src: "/img/slider/img4.jpg", alt: "Fourth image" },
+          { src: "/img/slider/img5.jpg", alt: "Fifth image" },
+          { src: "/img/slider/img6.jpg", alt: "Sixth image" },
+        ]}
+        maxWidth="1000px"
+        aspectRatio="3/2"
+        slidesToShow={3}
+        gap="1rem"
+      />
       <div className={styles["about-container"]}>
         <div className={styles.left}>
           <h3>O spoločnosti CARAMETAL spol. s.r.o.</h3>
@@ -111,7 +126,6 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-
       <section className={styles["section-services"]}>
         <div className={styles["services-text-wrapper"]}>
           <div>
@@ -148,7 +162,6 @@ export default function AboutUs() {
           ></Image>
         </div>
       </section>
-
       <div className={styles["certificates-text"]}>
         <h3>Certifikáty</h3>
         <p>
@@ -156,7 +169,6 @@ export default function AboutUs() {
           protipožiarych náterov
         </p>
       </div>
-
       <Gallery images={galleryImages} enableSlideAnimation={true}></Gallery>
     </div>
   );
