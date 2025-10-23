@@ -83,6 +83,21 @@
     transform: scale(.9);
 }
 
+.certificates-text {
+    text-align: center;
+}
+
+.certificates-text h3 {
+    color: var(--sections-red);
+    font-family: var(--font-monserratSemiBold);
+    font-size: 2.5rem;
+}
+
+.certificates-text p {
+    font-size: 1.3rem;
+    margin-top: 1em;
+}
+
 
 
 @media screen and (max-width: 1000px) {

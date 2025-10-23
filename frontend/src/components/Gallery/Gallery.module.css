@@ -1,3 +1,15 @@
+/* Gallery slide-up animation */
+.gallery-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.gallery-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .grid-container {
     margin: 3em;
     display: grid;
@@ -79,6 +91,12 @@
 }
 
 @media screen and (max-width: 991px) {
+
+    /* Faster animations on mobile */
+    .gallery-item {
+        transform: translateY(20px);
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
 
     .grid-container {
         margin: 1em;

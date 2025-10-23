@@ -72,12 +72,20 @@ const galleryImages = [
   },
 ];
 
-export default function Gallery({ images }: GalleryImagesProps) {
+export default function Gallery({
+  images,
+  enableSlideAnimation = false,
+}: GalleryImagesProps) {
   const [galleryImage, setGalleryImage] = useState(images[0].src);
   const [title, setTitle] = useState("");
   const [showImage, setShowImage] = useState("hidden");
   const [index, setIndex] = useState(0);
   const [imageOpacity, setImageOpacity] = useState(1);
+  const [visibleImages, setVisibleImages] = useState<number[]>([]);
+
+  // Scroll direction tracking for directional animation
+  const [scrollDirection, setScrollDirection] = useState<"down" | "up">("down");
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Touch/swipe states
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -120,6 +128,20 @@ export default function Gallery({ images }: GalleryImagesProps) {
       });
     }
   }, [showImage, images, index]);
+
+  // Track scroll direction for directional animation
+  useEffect(() => {
+    if (!enableSlideAnimation) return;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollDirection(currentScrollY > lastScrollY ? "down" : "up");
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, enableSlideAnimation]);
 
   function nextImage() {
     setImageOpacity(0.7);
@@ -212,12 +234,80 @@ export default function Gallery({ images }: GalleryImagesProps) {
     };
   }, [showImage, index]); // Dependencies: re-run when showImage or index changes
 
+  // Intersection Observer for slide-up animation (only when enabled)
+  useEffect(() => {
+    if (!enableSlideAnimation) return;
+
+    // Observer for individual images
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const imageIndex = parseInt(
+            entry.target.getAttribute("data-index") || "0"
+          );
+
+          if (entry.isIntersecting && scrollDirection === "down") {
+            // Only animate when scrolling down (discovery mode)
+            setTimeout(() => {
+              setVisibleImages(prev => [...prev, imageIndex]);
+            }, imageIndex * 100); // Stagger animation by 100ms per image
+          }
+          // Images stay visible when scrolling up!
+        });
+      },
+      { threshold: 0.3, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    // Observer for the entire gallery container to reset when far away
+    const galleryResetObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting && scrollDirection === "up") {
+            // Reset all images when gallery completely out of view while scrolling up
+            setVisibleImages([]);
+          }
+        });
+      },
+      { threshold: 0, rootMargin: "100px 0px 100px 0px" } // Large margin for complete exit
+    );
+
+    // Observe all image containers
+    const imageElements = document.querySelectorAll("[data-gallery-item]");
+    imageElements.forEach(el => observer.observe(el));
+
+    // Observe the gallery container
+    const galleryContainer = document.querySelector("[data-gallery-container]");
+    if (galleryContainer) {
+      galleryResetObserver.observe(galleryContainer);
+    }
+
+    return () => {
+      observer.disconnect();
+      galleryResetObserver.disconnect();
+    };
+  }, [enableSlideAnimation, scrollDirection]);
+
   return (
-    <div className={styles["grid-container"]}>
+    <div
+      className={styles["grid-container"]}
+      {...(enableSlideAnimation && { "data-gallery-container": "true" })}
+    >
       {images.map((image, index) => (
-        <div>
+        <div
+          key={index}
+          {...(enableSlideAnimation && {
+            "data-gallery-item": "true",
+            "data-index": index,
+          })}
+          className={
+            enableSlideAnimation
+              ? `${styles["gallery-item"]} ${
+                  visibleImages.includes(index) ? styles["visible"] : ""
+                }`
+              : ""
+          }
+        >
           <div
-            key={index}
             className={styles["img-container"]}
             onClick={() => {
               setShowImage("");

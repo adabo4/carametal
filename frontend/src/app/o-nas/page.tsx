@@ -149,7 +149,15 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <Gallery images={galleryImages}></Gallery>
+      <div className={styles["certificates-text"]}>
+        <h3>Certifikáty</h3>
+        <p>
+          Certifikáty a oprávnenia na používanie špeializovaných i
+          protipožiarych náterov
+        </p>
+      </div>
+
+      <Gallery images={galleryImages} enableSlideAnimation={true}></Gallery>
     </div>
   );
 }

@@ -7,6 +7,7 @@ export interface GalleryImage {
 export interface GalleryImagesProps {
   images: GalleryImage[];
   className?: string;
+  enableSlideAnimation?: boolean;
 }
 
 export interface FormData {
