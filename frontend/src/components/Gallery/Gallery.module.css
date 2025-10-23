@@ -68,6 +68,10 @@
     display: none;
 }
 
+.preload-container {
+    display: none;
+}
+
 @media screen and (max-width: 1025px) {
     .gallery-img {
         min-width: 500px;

@@ -134,7 +134,18 @@ export default function AboutUs() {
           </p>
         </div>
         <div className={styles["services-img"]}>
-          <Image fill className={styles.img} src="/img/building.jpg"></Image>
+          <Image
+            fill
+            className={styles.img}
+            src="/img/building.jpg"
+            alt="Areál Carametal"
+            quality={60}
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZjNmNGY2Ii8+Cjwvc3ZnPgo="
+            sizes="(max-width: 768px) 100vw,
+         (max-width: 1200px) 90vw,
+         1200px"
+          ></Image>
         </div>
       </section>
 

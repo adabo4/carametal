@@ -76,15 +76,53 @@ export default function Gallery({ images }: GalleryImagesProps) {
   const [galleryImage, setGalleryImage] = useState(images[0].src);
   const [title, setTitle] = useState("");
   const [showImage, setShowImage] = useState("hidden");
-  const [index, setIndex] = useState(0.3);
+  const [index, setIndex] = useState(0);
   const [imageOpacity, setImageOpacity] = useState(1);
 
   // Touch/swipe states
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
+  // Preload optimized images when gallery opens for instant navigation
+  useEffect(() => {
+    if (showImage !== "hidden") {
+      // Preload next and previous images with Next.js optimization
+      const currentIndex = index;
+      const imagesToPreload = [];
+
+      // Add next 2 images
+      for (let i = 1; i <= 2; i++) {
+        const nextIndex = (currentIndex + i) % images.length;
+        imagesToPreload.push(images[nextIndex].src);
+      }
+
+      // Add previous 2 images
+      for (let i = 1; i <= 2; i++) {
+        const prevIndex = (currentIndex - i + images.length) % images.length;
+        imagesToPreload.push(images[prevIndex].src);
+      }
+
+      // Create optimized image URLs that match Next.js format
+      imagesToPreload.forEach(src => {
+        const img = document.createElement("img");
+        // Force Next.js to generate and cache the optimized version
+        img.src = `/_next/image?url=${encodeURIComponent(src)}&w=800&q=75`;
+        img.style.display = "none";
+        document.body.appendChild(img);
+
+        // Clean up after loading
+        img.onload = () => {
+          document.body.removeChild(img);
+        };
+        img.onerror = () => {
+          document.body.removeChild(img);
+        };
+      });
+    }
+  }, [showImage, images, index]);
+
   function nextImage() {
-    setImageOpacity(0.3);
+    setImageOpacity(0.7);
 
     setTimeout(() => {
       if (index + 1 === images.length) {
@@ -99,11 +137,12 @@ export default function Gallery({ images }: GalleryImagesProps) {
 
       setTimeout(() => {
         setImageOpacity(1);
-      }, 50);
-    }, 300);
+      }, 20);
+    }, 80);
   }
+
   function prevImage() {
-    setImageOpacity(0.3);
+    setImageOpacity(0.7);
 
     setTimeout(() => {
       if (index === 0) {
@@ -118,8 +157,8 @@ export default function Gallery({ images }: GalleryImagesProps) {
 
       setTimeout(() => {
         setImageOpacity(1);
-      }, 50);
-    }, 300);
+      }, 20);
+    }, 80);
   }
 
   // Swipe detection constants
@@ -187,7 +226,17 @@ export default function Gallery({ images }: GalleryImagesProps) {
               setIndex(index);
             }}
           >
-            <Image src={image.src} alt={image.alt} width={500} height={500} />
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={400}
+              height={400}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              sizes="(max-width: 768px) 50vw, 300px"
+              quality={40}
+              loading="lazy"
+            />
           </div>
           <p className={styles["img-title"]}>{image.alt}</p>
         </div>
@@ -204,12 +253,42 @@ export default function Gallery({ images }: GalleryImagesProps) {
         </div>
         <Image
           src={galleryImage}
-          width={1000}
-          height={800}
+          width={800}
+          height={600}
           alt="1st Image"
           className={styles["gallery-img"]}
-          style={{ opacity: imageOpacity }}
+          style={{
+            opacity: imageOpacity,
+            transition: "opacity 0.1s ease-in-out",
+          }}
+          sizes="(max-width: 400px) 300px, (max-width: 768px) 500px, 800px"
+          quality={75}
+          priority
         ></Image>
+
+        {/* Preload adjacent images with Next.js Image component */}
+        {showImage !== "hidden" && (
+          <div className={styles["preload-container"]}>
+            {/* Preload next image */}
+            <Image
+              src={images[(index + 1) % images.length].src}
+              width={800}
+              height={600}
+              alt="preload next"
+              quality={75}
+              priority
+            />
+            {/* Preload previous image */}
+            <Image
+              src={images[(index - 1 + images.length) % images.length].src}
+              width={800}
+              height={600}
+              alt="preload prev"
+              quality={75}
+              priority
+            />
+          </div>
+        )}
 
         <div className={styles["left-arrow"]} onClick={nextImage}>
           <FiChevronRight className="w-10 h-10"></FiChevronRight>
