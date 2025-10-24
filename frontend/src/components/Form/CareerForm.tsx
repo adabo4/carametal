@@ -18,10 +18,33 @@ export default function CareerForm() {
     reValidateMode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<FormData> = data => {
-    console.log("Form data:", data);
-    //  await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
-    reset();
+  const onSubmit: SubmitHandler<FormData> = async data => {
+    try {
+      // Include phone number in the data
+      const formData = {
+        ...data,
+        phone: phone,
+      };
+
+      const response = await fetch("/api/career", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Vaša žiadosť bola úspešne odoslaná! Budeme Vás kontaktovať.");
+        reset();
+        setPhone("");
+      } else {
+        throw new Error("Failed to send career application");
+      }
+    } catch (error) {
+      console.error("Error sending career application:", error);
+      alert("Nastala chyba pri odosielaní žiadosti. Skúste to prosím znovu.");
+    }
   };
   return (
     <>
@@ -55,7 +78,7 @@ export default function CareerForm() {
         )}
         <label className={styles.label}>Email</label>
         <input
-          type="text"
+          type="email"
           className={styles.input}
           {...register("email", {
             required: "Email je povinný",

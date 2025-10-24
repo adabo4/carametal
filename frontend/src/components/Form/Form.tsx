@@ -15,10 +15,27 @@ export default function Form() {
     reValidateMode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<FormData> = data => {
-    console.log("Form data:", data);
-    // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
-    reset();
+  const onSubmit: SubmitHandler<FormData> = async data => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        console.log(data);
+        alert("Správa bola úspešne odoslaná! Ďakujeme za kontakt.");
+        reset();
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("Nastala chyba pri odosielaní správy. Skúste to prosím znovu.");
+    }
   };
 
   return (

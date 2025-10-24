@@ -240,7 +240,7 @@ export default function SwipeCarousel({ images }: SwipeCarouselProps) {
         </button>
       )}
 
-      {/* Dots */}
+      {/* Dots
       <div className={styles.dotsContainer}>
         {images.map((_, i) => (
           <button
@@ -250,7 +250,7 @@ export default function SwipeCarousel({ images }: SwipeCarouselProps) {
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
