@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./SwipeCarousel.module.css";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 
 interface ImageData {
   src: string;
@@ -85,6 +87,17 @@ export default function SwipeCarousel({ images }: SwipeCarouselProps) {
     setIndex(i => wrap(i + 1));
   };
 
+  // Helper functions to determine arrow visibility
+  const shouldShowLeftArrow = () => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+    const minIndex = isMobile ? 0 : 1;
+    return index > minIndex;
+  };
+
+  const shouldShowRightArrow = () => {
+    return index < maxIndex;
+  };
+
   // Update maxIndex when screen size changes
   useEffect(() => {
     const handleResize = () => {
@@ -128,21 +141,25 @@ export default function SwipeCarousel({ images }: SwipeCarouselProps) {
       if (index === 0) {
         offset = 0; // Show first 2 images whole
       } else if (index === images.length - 1) {
-        // Last image: show it whole by positioning it in the right slot
-        offset = slideWidth + gap; // Position last image to show whole in right position
+        // Last image: ensure it's completely visible with small buffer
+        // Available width = window.innerWidth - track padding (10px each side) = window.innerWidth - 20
+        // Add small buffer to ensure 100% visibility
+        offset = window.innerWidth - 20 - slideWidth - 5;
       } else {
         offset = slideWidth * 0.5; // Center the selected image with half-peeks
       }
     } else if (isMobile) {
-      // Tablet/mobile: 2 images side by side
+      // Mobile: 2 images side by side
       slideWidth = (window.innerWidth - 45) / 2;
       gap = 15;
       // Special mobile logic
       if (index === 0) {
         offset = 0; // Show first 2 images whole
       } else if (index === images.length - 1) {
-        // Last image: show it whole by positioning it in the right slot
-        offset = slideWidth + gap; // Position last image to show whole in right position
+        // Last image: ensure it's completely visible with small buffer
+        // Available width = window.innerWidth - track padding (15px each side) = window.innerWidth - 30
+        // Add small buffer to ensure 100% visibility
+        offset = window.innerWidth - 30 - slideWidth - 5;
       } else {
         offset = slideWidth * 0.5; // Center the selected image with half-peeks
       }
@@ -158,7 +175,14 @@ export default function SwipeCarousel({ images }: SwipeCarouselProps) {
     }
 
     // Apply transform
-    track.style.transform = `translateX(${-index * slideWidth + offset}px)`;
+    if (isMobile || isSmallMobile) {
+      // Mobile: include gaps in the calculation
+      const mobileGap = gap || 15; // Fallback to 15 if gap is undefined
+      track.style.transform = `translateX(${-index * (slideWidth + mobileGap) + offset}px)`;
+    } else {
+      // Desktop/Tablet: use original calculation
+      track.style.transform = `translateX(${-index * slideWidth + offset}px)`;
+    }
   }, [index, images.length]);
 
   return (
@@ -195,20 +219,26 @@ export default function SwipeCarousel({ images }: SwipeCarouselProps) {
       </div>
 
       {/* Arrows */}
-      <button
-        onClick={goToPrev}
-        aria-label="Previous slide"
-        className={`${styles.arrow} ${styles.leftArrow}`}
-      >
-        ←
-      </button>
-      <button
-        onClick={goToNext}
-        aria-label="Next slide"
-        className={`${styles.arrow} ${styles.rightArrow}`}
-      >
-        →
-      </button>
+      {shouldShowLeftArrow() && (
+        <button
+          onClick={goToPrev}
+          aria-label="Previous slide"
+          className={`${styles.arrow} ${styles.leftArrow}`}
+        >
+          {/* ← */}
+          <HiOutlineArrowNarrowLeft className={styles.icon} />
+        </button>
+      )}
+      {shouldShowRightArrow() && (
+        <button
+          onClick={goToNext}
+          aria-label="Next slide"
+          className={`${styles.arrow} ${styles.rightArrow}`}
+        >
+          {/* → */}
+          <HiOutlineArrowNarrowRight className={styles.icon} />
+        </button>
+      )}
 
       {/* Dots */}
       <div className={styles.dotsContainer}>
