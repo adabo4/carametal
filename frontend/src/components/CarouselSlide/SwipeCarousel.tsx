@@ -1,51 +1,16 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import styles from "./SwipeCarousel.module.css";
-import { HiArrowSmallRight } from "react-icons/hi2";
-import { HiArrowSmallLeft } from "react-icons/hi2";
 
-// Minimal, dependency‑free carousel.
-// - Click arrows to slide
-// - Drag/swipe on touch
-// - Keyboard ← → support when focused
-// - Responsive, keeps 16:9 by default (change via aspect-*)
-// Usage:
-// <SwipeCarousel
-//   images=[
-//     { src: "/img/certificates-img/img1.jpg", alt: "Hempel" },
-//     { src: "/img/certificates-img/img2.jpg", alt: "Jotun" },
-//     ...
-//   ]
-// />
+export default function SwipeCarousel({ images }: { images: string[] }) {
+  const startIndex = 0;
 
-export type CarouselImage = { src: string; alt?: string };
-
-type Props = {
-  images: CarouselImage[];
-  className?: string;
-  startIndex?: number;
-  rounded?: boolean;
-  autoPlayMs?: number | null; // set e.g. 5000 to auto-advance
-  maxWidth?: string; // e.g. "800px", "60%"
-  aspectRatio?: string; // e.g. "16/9", "4/3", "3/2"
-  slidesToShow?: number; // Number of slides visible at once
-  gap?: string; // Gap between slides e.g. "1rem"
-};
-
-export default function SwipeCarousel({
-  images,
-  className = "",
-  startIndex = 0,
-  rounded = true,
-  autoPlayMs = null,
-  maxWidth = "800px",
-  aspectRatio = "16/9",
-  slidesToShow = 1,
-  gap = "1rem",
-}: Props) {
   // Set initial index based on device type
   const getInitialIndex = () => {
-    const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+    if (typeof window === "undefined") return 0;
+    const isMobile = window.innerWidth <= 768;
     if (isMobile) {
       return startIndex % Math.max(images.length, 1); // Mobile: start with 1st image (index 0)
     } else {
@@ -67,6 +32,35 @@ export default function SwipeCarousel({
   const [maxIndex, setMaxIndex] = useState(getMaxIndex());
   const wrap = (i: number) => Math.max(0, Math.min(i, maxIndex));
 
+  // Simple touch/swipe functionality (like CarouselHorizontalNew)
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      goToNext();
+    } else if (isRightSwipe) {
+      goToPrev();
+    }
+  };
+
   // Custom navigation functions for desktop vs mobile behavior
   const goToPrev = () => {
     const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
@@ -78,13 +72,6 @@ export default function SwipeCarousel({
     setIndex(i => wrap(i + 1));
   };
 
-  // Device-specific wrapping for swipe navigation
-  const wrapForSwipe = (i: number) => {
-    const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-    const minIndex = isMobile ? 0 : 1;
-    return Math.max(minIndex, Math.min(i, maxIndex));
-  };
-
   // Update maxIndex when screen size changes
   useEffect(() => {
     const handleResize = () => {
@@ -94,225 +81,19 @@ export default function SwipeCarousel({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [images.length]);
+
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const rootRef = useRef<HTMLDivElement | null>(null);
 
-  // Auto play
+  // Keyboard navigation
   useEffect(() => {
-    if (!autoPlayMs) return;
-    const id = setInterval(() => setIndex(i => wrap(i + 1)), autoPlayMs);
-    return () => clearInterval(id);
-  }, [autoPlayMs, images.length]);
-
-  // Keyboard support when container is focused
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
+    const el = document.body;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") setIndex(i => wrap(i + 1));
-      if (e.key === "ArrowLeft") setIndex(i => wrap(i - 1));
+      if (e.key === "ArrowLeft") goToPrev();
+      else if (e.key === "ArrowRight") goToNext();
     };
     el.addEventListener("keydown", onKey);
     return () => el.removeEventListener("keydown", onKey);
   }, [images.length]);
-
-  // Drag / swipe
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    let startX = 0;
-    let currentX = 0;
-    let dragging = false;
-    let startTime = 0;
-
-    // Touch events for mobile
-    const onTouchStart = (e: TouchEvent) => {
-      e.preventDefault();
-      dragging = true;
-      startX = e.touches[0].clientX;
-      currentX = e.touches[0].clientX;
-      startTime = Date.now();
-      track.style.transition = "none";
-    };
-
-    const onTouchMove = (e: TouchEvent) => {
-      if (!dragging) return;
-      e.preventDefault();
-      currentX = e.touches[0].clientX;
-      const dx = currentX - startX;
-
-      // Calculate responsive dimensions for swipe
-      const isMobile = window.innerWidth <= 768;
-      const isTablet = window.innerWidth > 768 && window.innerWidth <= 1100;
-      const isSmallMobile = window.innerWidth <= 480;
-
-      let slideWidth, gap, offset;
-
-      if (isSmallMobile) {
-        slideWidth = (window.innerWidth - 30) / 2;
-        gap = 10;
-        if (index === 0) {
-          offset = 0;
-        } else if (index === images.length - 1) {
-          offset = slideWidth + gap;
-        } else {
-          offset = slideWidth * 0.5;
-        }
-      } else if (isMobile) {
-        slideWidth = (window.innerWidth - 45) / 2;
-        gap = 15;
-        if (index === 0) {
-          offset = 0;
-        } else if (index === images.length - 1) {
-          offset = slideWidth + gap;
-        } else {
-          offset = slideWidth * 0.5;
-        }
-      } else if (isTablet) {
-        slideWidth = Math.min(360, (window.innerWidth - 75) / 3);
-        gap = 15;
-        offset = slideWidth + gap;
-      } else {
-        slideWidth = 442 + 20;
-        offset = slideWidth;
-      }
-
-      track.style.transform = `translateX(${-index * (slideWidth + (gap || 20)) + offset + dx}px)`;
-    };
-
-    const onTouchEnd = (e: TouchEvent) => {
-      if (!dragging) return;
-      e.preventDefault();
-      dragging = false;
-      const dx = currentX - startX;
-      const dt = Date.now() - startTime;
-      const threshold = track.clientWidth * 0.15;
-
-      let next = index;
-      if (dx < -threshold || (dx < -30 && dt < 250)) {
-        next = index + 1;
-      } else if (dx > threshold || (dx > 30 && dt < 250)) {
-        next = index - 1;
-      }
-
-      // Clamp to valid range
-      const isMobile = window.innerWidth <= 768;
-      const minIndex = isMobile ? 0 : 1;
-      const maxIndex = isMobile ? images.length - 1 : images.length - 2;
-      next = Math.max(minIndex, Math.min(next, maxIndex));
-
-      setIndex(next);
-
-      requestAnimationFrame(() => {
-        track.style.transition =
-          "transform 450ms cubic-bezier(0.22, 1, 0.36, 1)";
-      });
-    };
-
-    const onPointerDown = (e: PointerEvent) => {
-      dragging = true;
-      startX = e.clientX;
-      currentX = e.clientX;
-      startTime = Date.now();
-      track.style.transition = "none"; // Disable transitions during drag
-      track.setPointerCapture(e.pointerId);
-    };
-
-    const onPointerMove = (e: PointerEvent) => {
-      if (!dragging) return;
-      currentX = e.clientX;
-      const dx = currentX - startX;
-
-      // Calculate responsive dimensions for swipe
-      const isMobile = window.innerWidth <= 768;
-      const isTablet = window.innerWidth > 768 && window.innerWidth <= 1100;
-      const isSmallMobile = window.innerWidth <= 480;
-
-      let slideWidth, gap, offset;
-
-      if (isSmallMobile) {
-        slideWidth = (window.innerWidth - 30) / 2;
-        gap = 10;
-        if (index === 0) {
-          offset = 0;
-        } else if (index === images.length - 1) {
-          offset = slideWidth + gap;
-        } else {
-          offset = slideWidth * 0.5;
-        }
-      } else if (isMobile) {
-        slideWidth = (window.innerWidth - 45) / 2;
-        gap = 15;
-        if (index === 0) {
-          offset = 0;
-        } else if (index === images.length - 1) {
-          offset = slideWidth + gap;
-        } else {
-          offset = slideWidth * 0.5;
-        }
-      } else if (isTablet) {
-        slideWidth = Math.min(360, (window.innerWidth - 75) / 3);
-        gap = 15;
-        offset = slideWidth + gap; // Use desktop-style centering
-      } else {
-        slideWidth = 442 + 20;
-        offset = slideWidth;
-      }
-
-      track.style.transform = `translateX(${-index * (slideWidth + (gap || 20)) + offset + dx}px)`;
-    };
-
-    const onPointerUp = (e: PointerEvent) => {
-      if (!dragging) return;
-      dragging = false;
-      track.releasePointerCapture(e.pointerId);
-      const dx = currentX - startX;
-      const dt = Date.now() - startTime;
-      const threshold = track.clientWidth * 0.15; // 15% swipe
-
-      // Simple snap logic
-      let next = index;
-      if (dx < -threshold || (dx < -30 && dt < 250)) {
-        next = index + 1;
-      } else if (dx > threshold || (dx > 30 && dt < 250)) {
-        next = index - 1;
-      }
-
-      // Clamp to valid range
-      const isMobile = window.innerWidth <= 768;
-      const minIndex = isMobile ? 0 : 1;
-      const maxIndex = isMobile ? images.length - 1 : images.length - 2;
-      next = Math.max(minIndex, Math.min(next, maxIndex));
-
-      setIndex(next);
-
-      // Re-enable transition for snap
-      requestAnimationFrame(() => {
-        track.style.transition =
-          "transform 450ms cubic-bezier(0.22, 1, 0.36, 1)";
-      });
-    };
-
-    // Add touch events for mobile (primary)
-    track.addEventListener("touchstart", onTouchStart, { passive: false });
-    track.addEventListener("touchmove", onTouchMove, { passive: false });
-    track.addEventListener("touchend", onTouchEnd, { passive: false });
-
-    // Add pointer events for desktop fallback
-    track.addEventListener("pointerdown", onPointerDown);
-    window.addEventListener("pointermove", onPointerMove);
-    window.addEventListener("pointerup", onPointerUp);
-
-    return () => {
-      track.removeEventListener("touchstart", onTouchStart);
-      track.removeEventListener("touchmove", onTouchMove);
-      track.removeEventListener("touchend", onTouchEnd);
-      track.removeEventListener("pointerdown", onPointerDown);
-      window.removeEventListener("pointermove", onPointerMove);
-      window.removeEventListener("pointerup", onPointerUp);
-    };
-  }, [index, images.length]);
 
   // Sync transforms when index changes (for arrow navigation)
   useEffect(() => {
@@ -363,49 +144,30 @@ export default function SwipeCarousel({
       offset = slideWidth; // Desktop centering
     }
 
-    track.style.transition = "transform 450ms cubic-bezier(0.22, 1, 0.36, 1)";
-    track.style.transform = `translateX(-${index * (slideWidth + (gap || 20)) - offset}px)`;
+    // Apply transform
+    track.style.transform = `translateX(${-index * slideWidth + offset}px)`;
   }, [index, images.length]);
 
-  const bulletLabel = (i: number) => images[i]?.alt || `Slide ${i + 1}`;
-
-  if (!images?.length) return null;
-
   return (
-    <div
-      ref={rootRef}
-      tabIndex={0}
-      className={`${styles.carousel} ${className}`}
-      style={
-        {
-          "--carousel-max-width": maxWidth,
-          "--carousel-aspect-ratio": aspectRatio,
-          "--slides-to-show": slidesToShow,
-          "--slide-gap": gap,
-        } as React.CSSProperties
-      }
-      role="region"
-      aria-roledescription="carousel"
-      aria-label="Image carousel"
-    >
-      {/* Viewport */}
-      <div className={`${styles.viewport} ${rounded ? styles.rounded : ""}`}>
+    <div className={styles.carousel}>
+      <div className={styles.viewport}>
         <div
           ref={trackRef}
           className={styles.track}
-          style={{
-            transform: `translateX(-${index * (442 + 20) - (442 + 20)}px)`,
-          }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
-          {/* Show all images side by side */}
-          {images.map((img, i) => (
+          {images.map((src, i) => (
             <div key={i} className={styles.slide}>
               <div className={styles.imageContainer}>
-                <img
-                  src={img.src}
-                  alt={img.alt || `Slide ${i + 1}`}
+                <Image
                   className={styles.image}
-                  draggable={false}
+                  src={src}
+                  width={442}
+                  height={589}
+                  alt={`Slide ${i + 1}`}
+                  priority={i < 3}
                 />
               </div>
             </div>
@@ -419,16 +181,14 @@ export default function SwipeCarousel({
         aria-label="Previous slide"
         className={`${styles.arrow} ${styles.leftArrow}`}
       >
-        {/* ← */}
-        <HiArrowSmallLeft className={styles.icon} />
+        ←
       </button>
       <button
         onClick={goToNext}
         aria-label="Next slide"
         className={`${styles.arrow} ${styles.rightArrow}`}
       >
-        {/* → */}
-        <HiArrowSmallRight className={styles.icon} />
+        →
       </button>
 
       {/* Dots */}
@@ -437,8 +197,8 @@ export default function SwipeCarousel({
           <button
             key={i}
             onClick={() => setIndex(i)}
-            aria-label={`Go to ${bulletLabel(i)}`}
-            className={`${styles.dot} ${i === index ? styles.activeDot : ""}`}
+            className={`${styles.dot} ${index === i ? styles.activeDot : ""}`}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
