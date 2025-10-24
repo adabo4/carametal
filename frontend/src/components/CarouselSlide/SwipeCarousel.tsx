@@ -189,18 +189,8 @@ export default function SwipeCarousel({
 
       // Snap
       let next = index;
-      const isMobile =
-        typeof window !== "undefined" && window.innerWidth <= 768;
-      const currentMaxIndex = isMobile ? images.length - 1 : images.length - 2;
-      const currentMinIndex = isMobile ? 0 : 1;
-
-      if (dx < -threshold || (dx < -30 && dt < 250)) {
-        // Swipe left (go to next/forward)
-        next = Math.min(index + 1, currentMaxIndex);
-      } else if (dx > threshold || (dx > 30 && dt < 250)) {
-        // Swipe right (go to prev/backward)
-        next = Math.max(index - 1, currentMinIndex);
-      }
+      if (dx < -threshold || (dx < -30 && dt < 250)) next = wrap(index + 1);
+      else if (dx > threshold || (dx > 30 && dt < 250)) next = wrap(index - 1);
 
       setIndex(next);
       // Re-enable transition for snap
