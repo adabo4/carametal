@@ -4,7 +4,20 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./SwipeCarousel.module.css";
 
-export default function SwipeCarousel({ images }: { images: string[] }) {
+interface ImageData {
+  src: string;
+  alt: string;
+}
+
+interface SwipeCarouselProps {
+  images: string[] | ImageData[];
+  maxWidth?: string;
+  aspectRatio?: string;
+  slidesToShow?: number;
+  gap?: string;
+}
+
+export default function SwipeCarousel({ images }: SwipeCarouselProps) {
   const startIndex = 0;
 
   // Set initial index based on device type
@@ -158,20 +171,26 @@ export default function SwipeCarousel({ images }: { images: string[] }) {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          {images.map((src, i) => (
-            <div key={i} className={styles.slide}>
-              <div className={styles.imageContainer}>
-                <Image
-                  className={styles.image}
-                  src={src}
-                  width={442}
-                  height={589}
-                  alt={`Slide ${i + 1}`}
-                  priority={i < 3}
-                />
+          {images.map((image, i) => {
+            const src = typeof image === "string" ? image : image.src;
+            const alt =
+              typeof image === "string" ? `Slide ${i + 1}` : image.alt;
+
+            return (
+              <div key={i} className={styles.slide}>
+                <div className={styles.imageContainer}>
+                  <Image
+                    className={styles.image}
+                    src={src}
+                    width={442}
+                    height={589}
+                    alt={alt}
+                    priority={i < 3}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
