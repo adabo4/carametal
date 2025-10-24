@@ -78,6 +78,13 @@ export default function SwipeCarousel({
     setIndex(i => wrap(i + 1));
   };
 
+  // Device-specific wrapping for swipe navigation
+  const wrapForSwipe = (i: number) => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+    const minIndex = isMobile ? 0 : 1;
+    return Math.max(minIndex, Math.min(i, maxIndex));
+  };
+
   // Update maxIndex when screen size changes
   useEffect(() => {
     const handleResize = () => {
@@ -118,6 +125,90 @@ export default function SwipeCarousel({
     let currentX = 0;
     let dragging = false;
     let startTime = 0;
+
+    // Touch events for mobile
+    const onTouchStart = (e: TouchEvent) => {
+      e.preventDefault();
+      dragging = true;
+      startX = e.touches[0].clientX;
+      currentX = e.touches[0].clientX;
+      startTime = Date.now();
+      track.style.transition = "none";
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!dragging) return;
+      e.preventDefault();
+      currentX = e.touches[0].clientX;
+      const dx = currentX - startX;
+
+      // Calculate responsive dimensions for swipe
+      const isMobile = window.innerWidth <= 768;
+      const isTablet = window.innerWidth > 768 && window.innerWidth <= 1100;
+      const isSmallMobile = window.innerWidth <= 480;
+
+      let slideWidth, gap, offset;
+
+      if (isSmallMobile) {
+        slideWidth = (window.innerWidth - 30) / 2;
+        gap = 10;
+        if (index === 0) {
+          offset = 0;
+        } else if (index === images.length - 1) {
+          offset = slideWidth + gap;
+        } else {
+          offset = slideWidth * 0.5;
+        }
+      } else if (isMobile) {
+        slideWidth = (window.innerWidth - 45) / 2;
+        gap = 15;
+        if (index === 0) {
+          offset = 0;
+        } else if (index === images.length - 1) {
+          offset = slideWidth + gap;
+        } else {
+          offset = slideWidth * 0.5;
+        }
+      } else if (isTablet) {
+        slideWidth = Math.min(360, (window.innerWidth - 75) / 3);
+        gap = 15;
+        offset = slideWidth + gap;
+      } else {
+        slideWidth = 442 + 20;
+        offset = slideWidth;
+      }
+
+      track.style.transform = `translateX(${-index * (slideWidth + (gap || 20)) + offset + dx}px)`;
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!dragging) return;
+      e.preventDefault();
+      dragging = false;
+      const dx = currentX - startX;
+      const dt = Date.now() - startTime;
+      const threshold = track.clientWidth * 0.15;
+
+      let next = index;
+      if (dx < -threshold || (dx < -30 && dt < 250)) {
+        next = index + 1;
+      } else if (dx > threshold || (dx > 30 && dt < 250)) {
+        next = index - 1;
+      }
+
+      // Clamp to valid range
+      const isMobile = window.innerWidth <= 768;
+      const minIndex = isMobile ? 0 : 1;
+      const maxIndex = isMobile ? images.length - 1 : images.length - 2;
+      next = Math.max(minIndex, Math.min(next, maxIndex));
+
+      setIndex(next);
+
+      requestAnimationFrame(() => {
+        track.style.transition =
+          "transform 450ms cubic-bezier(0.22, 1, 0.36, 1)";
+      });
+    };
 
     const onPointerDown = (e: PointerEvent) => {
       dragging = true;
@@ -180,26 +271,43 @@ export default function SwipeCarousel({
       const dt = Date.now() - startTime;
       const threshold = track.clientWidth * 0.15; // 15% swipe
 
-      // Snap
+      // Simple snap logic
       let next = index;
-      if (dx < -threshold || (dx < -30 && dt < 250)) next = wrap(index + 1);
-      else if (dx > threshold || (dx > 30 && dt < 250)) next = wrap(index - 1);
+      if (dx < -threshold || (dx < -30 && dt < 250)) {
+        next = index + 1;
+      } else if (dx > threshold || (dx > 30 && dt < 250)) {
+        next = index - 1;
+      }
+
+      // Clamp to valid range
+      const isMobile = window.innerWidth <= 768;
+      const minIndex = isMobile ? 0 : 1;
+      const maxIndex = isMobile ? images.length - 1 : images.length - 2;
+      next = Math.max(minIndex, Math.min(next, maxIndex));
 
       setIndex(next);
+
       // Re-enable transition for snap
       requestAnimationFrame(() => {
-        const slideWidth = 442 + 20;
-        const offset = slideWidth; // Same centering offset
         track.style.transition =
           "transform 450ms cubic-bezier(0.22, 1, 0.36, 1)";
-        track.style.transform = `translateX(-${next * slideWidth - offset}px)`;
       });
     };
 
+    // Add touch events for mobile (primary)
+    track.addEventListener("touchstart", onTouchStart, { passive: false });
+    track.addEventListener("touchmove", onTouchMove, { passive: false });
+    track.addEventListener("touchend", onTouchEnd, { passive: false });
+
+    // Add pointer events for desktop fallback
     track.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerUp);
+
     return () => {
+      track.removeEventListener("touchstart", onTouchStart);
+      track.removeEventListener("touchmove", onTouchMove);
+      track.removeEventListener("touchend", onTouchEnd);
       track.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerup", onPointerUp);
