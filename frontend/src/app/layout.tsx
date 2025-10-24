@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ConditionalNavigation from "@/components/Navbar/ConditionalNavigation";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import {
   montserratAlt1Light,
   montserratAlt1SemiBold,
@@ -28,6 +29,7 @@ export default function RootLayout({
         <ConditionalNavigation></ConditionalNavigation>
         {children}
         <Footer></Footer>
+        <ScrollToTop />
       </body>
     </html>
   );
