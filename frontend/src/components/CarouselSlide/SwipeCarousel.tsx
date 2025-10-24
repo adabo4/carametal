@@ -187,25 +187,48 @@ export default function SwipeCarousel({
       const dt = Date.now() - startTime;
       const threshold = track.clientWidth * 0.15; // 15% swipe
 
-      // Snap
+      // Simple snap logic
       let next = index;
-      if (dx < -threshold || (dx < -30 && dt < 250)) next = wrap(index + 1);
-      else if (dx > threshold || (dx > 30 && dt < 250)) next = wrap(index - 1);
+      if (dx < -threshold || (dx < -30 && dt < 250)) {
+        next = index + 1;
+      } else if (dx > threshold || (dx > 30 && dt < 250)) {
+        next = index - 1;
+      }
+
+      // Clamp to valid range
+      const isMobile = window.innerWidth <= 768;
+      const minIndex = isMobile ? 0 : 1;
+      const maxIndex = isMobile ? images.length - 1 : images.length - 2;
+      next = Math.max(minIndex, Math.min(next, maxIndex));
 
       setIndex(next);
+
       // Re-enable transition for snap
       requestAnimationFrame(() => {
-        const slideWidth = 442 + 20;
-        const offset = slideWidth; // Same centering offset
         track.style.transition =
           "transform 450ms cubic-bezier(0.22, 1, 0.36, 1)";
-        track.style.transform = `translateX(-${next * slideWidth - offset}px)`;
       });
     };
 
+    // Add both pointer and touch events for better mobile support
     track.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerUp);
+
+    // Add touch events as fallback
+    track.addEventListener(
+      "touchstart",
+      e => {
+        const touch = e.touches[0];
+        onPointerDown({
+          clientX: touch.clientX,
+          pointerId: 0,
+          preventDefault: () => e.preventDefault(),
+        } as PointerEvent);
+      },
+      { passive: false }
+    );
+
     return () => {
       track.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("pointermove", onPointerMove);
