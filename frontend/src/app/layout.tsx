@@ -23,6 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
+      <head>
+        <script
+          defer
+          src="http://localhost:3001/script.js"
+          data-website-id="71634b6b-548d-4c3b-9c80-c55874a86966"
+        ></script>
+      </head>
       <body
         className={`${montserratAlt1SemiBold.variable} ${roboto.variable} ${zeyada.variable} ${montserratAltBold.variable} ${montserratAlt1Light.variable}`}
       >
