@@ -97,8 +97,24 @@ export default function CareerForm() {
           value={phone}
           onChange={(phone: string) => setPhone(phone)}
         />
+        <div className="flex flex-col">
+          <div className="flex gap-2 items-baseline">
+            <input
+              {...register("checkedBox", {
+                required: "Pole je povinné.",
+              })}
+              type="checkbox"
+            />
+            <p className="w-full">
+              Oboznámil som sa so zásadami o Ochrane osobných údajov
+            </p>
+          </div>
+          {errors.checkedBox && (
+            <span className={styles.error}>{errors.checkedBox.message}</span>
+          )}
+        </div>
         <button type="submit" className={styles.submitBtn}>
-          Submit
+          Odoslať
         </button>
       </form>
     </>
