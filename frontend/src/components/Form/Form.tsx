@@ -109,6 +109,20 @@ export default function Form() {
           <span className={styles.error}>{errors.textMessage.message}</span>
         )}
       </div>
+      <div className="flex flex-col mx-10 sm:mx-1 items-left">
+        <div className="flex gap-2 items-baseline">
+          <input
+            {...register("checkedBox", {
+              required: "Pole je povinné.",
+            })}
+            type="checkbox"
+          />
+          <p>Oboznámil som sa so zásadami o Ochrane osobných údajov</p>
+        </div>
+        {errors.checkedBox && (
+          <span className={styles.error}>{errors.checkedBox.message}</span>
+        )}
+      </div>
 
       <button type="submit" className={styles.submitButton}>
         Odoslať

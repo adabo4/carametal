@@ -16,6 +16,7 @@ export interface FormData {
   email: string;
   phoneNumber?: string;
   textMessage: string;
+  checkedBox: boolean;
 }
 
 export interface NavItem {
