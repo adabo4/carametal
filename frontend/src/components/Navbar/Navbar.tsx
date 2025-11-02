@@ -29,16 +29,18 @@ export default function Navbar() {
         >
           {show
             ? navbarMobileLinks.map(({ href, label }) => (
-                <li key={href} className={styles.navFont}>
-                  <Link onClick={() => setShow(false)} href={href as Route}>
-                    {label}
-                  </Link>
-                </li>
+                <Link
+                  onClick={() => setShow(false)}
+                  href={href as Route}
+                  key={href}
+                >
+                  <li className={styles.navFont}>{label}</li>
+                </Link>
               ))
             : navbarLinks.map(({ href, label }) => (
-                <li key={href}>
-                  <Link href={href as Route}>{label}</Link>
-                </li>
+                <Link key={href} href={href as Route}>
+                  <li>{label}</li>
+                </Link>
               ))}
         </ul>
         <TfiClose

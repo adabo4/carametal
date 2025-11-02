@@ -44,25 +44,29 @@
     font-family: var(--font-ganache);
 }
 
-.nav-items-right li {
+.nav-items-right a {
     position: relative;
     height: 60px;
     align-items: center;
     z-index: 1;
     padding: 15px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.nav-items-right li:last-child {
+.nav-items-right a:last-child {
     background-color: var(--primary-color);
     color: black;
+    text-align: center;
 }
 
-.nav-items-right li:last-child:hover {
+.nav-items-right a:last-child:hover {
     background-color: black;
     color: var(--primary-color)
 }
 
-.nav-items-right li:hover {
+.nav-items-right a:hover {
     background-color: white;
     color: black;
     transition: all .3s ease-in;
@@ -119,7 +123,7 @@
         flex-wrap: wrap;
     }
 
-    .nav-items-right li {
+    .nav-items-right a {
         padding: 1em;
     }
 
@@ -196,6 +200,7 @@
         z-index: 3;
         opacity: 0;
         flex-wrap: nowrap;
+        border: none;
     }
 
     .nav-items-right.show {
