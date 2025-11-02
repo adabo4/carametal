@@ -5,6 +5,7 @@ import { FormData } from "@/lib/helpers";
 import styles from "./CareerForm.module.css";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
+import Link from "next/link";
 
 export default function CareerForm() {
   const [phone, setPhone] = useState("");
@@ -106,7 +107,10 @@ export default function CareerForm() {
               type="checkbox"
             />
             <p className="w-full">
-              Oboznámil som sa so zásadami o Ochrane osobných údajov
+              Oboznámil som sa so{" "}
+              <Link href="/gdpr" target="_blank" className={styles.link}>
+                <b>Zásadami ochrany osobných údajov.</b>
+              </Link>
             </p>
           </div>
           {errors.checkedBox && (

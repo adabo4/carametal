@@ -9,6 +9,7 @@ export default function GDPR() {
 
       <div className={styles["list-container"]}>
         <ol className={styles["ordered-list"]}>
+          {/*1. bod*/}
           <li>
             <h2 className={styles["list-headline"]}>
               Spracúvanie osobných údajov na www.carametal.sk
@@ -20,10 +21,10 @@ export default function GDPR() {
             </p>
             <ul className={styles["unordered-list"]}>
               <li className={styles.item}>
-                <b>
+                <strong>
                   Spracúvanie osobných údajov v prípade použitia kontaktného
                   formulára:
-                </b>
+                </strong>
                 <p>
                   Prevádzkovateľ webovej stránky plne rešpektuje právo
                   návštevníkov webovej stránky na ochranu osobných údajov, ktoré
@@ -39,25 +40,32 @@ export default function GDPR() {
               </li>
             </ul>
           </li>
+          {/* 2.  bod*/}
           <li>
             <h2 className={styles["list-headline"]}>Prevádzkovateľ</h2>
             <p>
               Osobné údaje získané prostredníctvom webovej stránky sú spracúvané
               obchodnou spoločnosťou{" "}
-              <b>
+              <strong>
                 CARAMETAL, spol. s r.o., so sídlom Nábrežie mládeže 61, Nitra
                 949 01. IČO: 36 523 623, zapísaná v Obchodnom registri Okresného
                 súdu Nitra oddiel: Sro, vložka č.: 10587/N,
-              </b>{" "}
+              </strong>{" "}
               ktorá má pri spracúvaní osobných údajov postavenie prevádzkovateľa
               (ďalej len „prevádzkovateľ“). <br />
               Kontaktné údaje prevádzkovateľa:
             </p>
-            <ul className={styles["unordered-list"]}>
-              <li>e-mail: info@carametal.sk</li>
-              <li>telefón: +421 37 77 29065</li>
-            </ul>
+            <address>
+              <ul className={styles["unordered-list"]}>
+                <li>
+                  e-mail:{" "}
+                  <a href="mailto:info@carametal.sk">info@carametal.sk</a>
+                </li>
+                <li>telefón: +421 37 77 29065</li>
+              </ul>
+            </address>
           </li>
+          {/*3. bod*/}
           <li>
             <h2 className={styles["list-headline"]}>
               Sprostredkovatelia spracúvania osobných údajov
@@ -72,18 +80,84 @@ export default function GDPR() {
             </p>
             <ul className={styles["unordered-list"]}>
               <li>
-                <b>Google Ireland Limited</b> (prevádzkovateľ služby Gmail a
-                Google Workspace) <br />
+                <strong>Google Ireland Limited</strong> (prevádzkovateľ služby
+                Gmail a Google Workspace) <br />
                 Použitie: prijímanie a spracovanie e-mailov z kontaktného
                 formulára. Miesto spracovania: EÚ / USA (v súlade so
                 štandardnými zmluvnými doložkami EÚ). Zásady ochrany osobných
                 údajov:{" "}
-                <Link href="https://policies.google.com/privacy">
-                  https://policies.google.com/privacy
+                <Link
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
+                  <u>https://policies.google.com/privacy</u>
+                </Link>
+                <p>
+                  Prenos osobných údajov do USA prebieha výhradne na základe
+                  platných záruk v súlade s rozhodnutím Európskej komisie o
+                  primeranosti podľa rámca EU-US Data Privacy Framework.
+                </p>
+              </li>
+              <li>
+                <strong>WebHouse, s.r.o. </strong>(sídlo: Paulínska 20, 917 01
+                Trnava, Slovenská republika) Použitie: hosting webovej stránky a
+                e-mailových schránok (info@carametal.sk ). Zásady ochrany
+                osobných údajov:{" "}
+                <Link
+                  href="https://www.webhouse.sk/ochrana-osobnych-udajov"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
+                  <u>https://www.webhouse.sk/ochrana-osobnych-udajov</u>
                 </Link>
               </li>
             </ul>
           </li>
+          {/*4. bod*/}
+          <li>
+            <h2 className={styles["list-headline"]}>
+              Poskytovanie osobných údajov tretím stranám a používanie externých
+              služieb
+            </h2>
+            <p>
+              Na webovej stránke môžu byť integrované služby tretích strán,
+              ktoré z technických dôvodov spracúvajú osobné údaje návštevníkov
+              (napr. IP adresa, typ zariadenia, prehliadač). Tieto služby sú
+              prevádzkované nezávislými subjektmi, ktoré vystupujú vo vzťahu k
+              návštevníkovi ako samostatní prevádzkovatelia.
+            </p>
+            <p className={styles["margin-top"]}>
+              Konkrétne ide o službu <strong>Google Maps</strong>, ktorú
+              poskytuje spoločnosť{" "}
+              <strong>
+                Google Ireland Limited, Gordon House, Barrow Street, Dublin 4,
+                Írsko.
+              </strong>{" "}
+              Účelom tejto služby je zobrazenie mapy s umiestnením prevádzky
+              spoločnosti <strong>CARAMETAL, spol. s r.o.</strong>
+            </p>
+            <p className={styles["margin-top"]}>
+              Pri zobrazení mapy dochádza k spracovaniu osobných údajov (najmä
+              IP adresa, technické údaje o zariadení), ktoré sú prenášané
+              spoločnosti Google. Google môže tieto údaje spracúvať aj na
+              svojich serveroch v tretích krajinách (napr. v USA) na základe
+              štandardných zmluvných doložiek EÚ a v súlade s{" "}
+              <strong>EU-US Data Privacy Framework.</strong> Podrobné informácie
+              o spracúvaní osobných údajov spoločnosťou Google sú dostupné na:{" "}
+              <Link
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                <u> https://policies.google.com/privacy</u>
+              </Link>
+            </p>
+          </li>
+          {/* 5. bod */}
           <li>
             <h2 className={styles["list-headline"]}>Prenos osobných údajov</h2>
             <p>
@@ -97,7 +171,21 @@ export default function GDPR() {
               uvedenej situácie, nerealizuje prenos osobných údajov do tretích
               krajín alebo medzinárodným organizáciám.
             </p>
+            <p className={styles["margin-top"]}>
+              {" "}
+              Prevádzkovateľ, s výnimkou vyššie uvedených poskytovateľov služieb
+              (napr. Google – Gmail a Google Maps), nerealizuje prenos osobných
+              údajov do tretích krajín alebo medzinárodným organizáciám.
+            </p>
+            <p className={styles["margin-top"]}>
+              V prípade, že nás kontaktujete prostredníctvom e-mailovej adresy
+              info@carametal.sk, vaše osobné údaje (napr. meno, e-mail, telefón,
+              obsah správy) budú spracované výlučne za účelom vybavenia vašej
+              požiadavky. E-mailová komunikácia je prevádzkovaná prostredníctvom
+              poskytovateľa hostingových služieb WebHouse, s.r.o.
+            </p>
           </li>
+          {/* 6. bod */}
           <li>
             <h2 className={styles["list-headline"]}>Práva dotknutej osoby</h2>
             <p>
@@ -109,38 +197,43 @@ export default function GDPR() {
             </p>
             <ul className={styles["unordered-list"]}>
               <li>
-                <b>
+                <strong>
                   Právo na prístup k vlastným osobným údajom podľa článku 15
                   GDPR.
-                </b>
+                </strong>
               </li>
               <li>
-                <b>
+                <strong>
                   Právo na opravu osobných údajov podľa článku 16 GDPR (alebo
                   obmedzenie spracovania podľa článku 18 GDPR).
-                </b>
+                </strong>
               </li>
               <li>
-                <b>Právo na vymazanie podľa článku 17 GDPR.</b>
+                <strong>Právo na vymazanie podľa článku 17 GDPR.</strong>
               </li>
               <li>
-                <b>Právo na prenosnosť údajov podľa článku 20 GDPR.</b>
+                <strong>
+                  Právo na prenosnosť údajov podľa článku 20 GDPR.
+                </strong>
               </li>
               <li>
-                <b>
+                <strong>
                   Právo vzniesť námietku voči spracovaniu podľa článku 21 GDPR.
-                </b>
+                </strong>
               </li>
               <li>
-                <b>Právo odvolať súhlas so spracovaním osobných údajov.</b>
+                <strong>
+                  Právo odvolať súhlas so spracovaním osobných údajov.
+                </strong>
               </li>
             </ul>
+            <p className={styles["margin-top"]}>
+              Subjekt údajov má ďalej právo podať sťažnosť Úradu pre ochranu
+              osobných údajov v prípade, že má podozrenie, že bolo porušené jeho
+              právo na ochranu údajov.
+            </p>
           </li>
-          <p>
-            Subjekt údajov má ďalej právo podať sťažnosť Úradu pre ochranu
-            osobných údajov v prípade, že má podozrenie, že bolo porušené jeho
-            právo na ochranu údajov.
-          </p>
+          {/* 7.  bod*/}
           <li>
             <h2 className={styles["list-headline"]}>
               Poskytovanie osobných údajov
@@ -155,13 +248,14 @@ export default function GDPR() {
               prevádzkovateľa.
             </p>
           </li>
+          {/* 8.  bod*/}
           <li>
             <h2 className={styles["list-headline"]}>
               Kontaktný formulár a spracúvanie osobných údajov
             </h2>
             <ul>
               <li className={styles.item}>
-                <b>Účel spracúvania osobných údajov</b>
+                <strong>Účel spracúvania osobných údajov</strong>
                 <p>
                   V prípade, ak dochádza k získavaniu osobných údajov dotknutej
                   osoby prostredníctvom kontaktného formulára umiestneného na
@@ -176,24 +270,18 @@ export default function GDPR() {
                 </p>
               </li>
               <li className={styles.item}>
-                <b> Právny základ spracúvania</b>
+                <strong> Právny základ spracúvania</strong>
                 <p>
-                  Osobné údaje návštevníka webovej stránky, ktorého osobného
-                  údaje boli získané prostredníctvom kontaktného formulára sú
-                  spracúvané na základe oprávneného záujmu prevádzkovateľa (čl.
-                  6 ods. 1 písm. f) GDPR). Prevádzkovateľ pred vykonávaním
-                  spracúvania osobných údajov na tomto právnom základe dôsledne
-                  preskúmal, či výkon takejto spracovateľskej operácie
-                  nepredstavuje neprimeraný zásah do práv a slobôd dotknutej
-                  osoby, a za týmto účelom uskutočnil test proporcionality.
-                  Oprávnený záujem prevádzkovateľa je daný snahou
-                  prevádzkovateľa zaistiť vybavovanie podnetov dotknutej osoby
-                  a/alebo poskytovanie iných informácií o prevádzkovateľom
-                  poskytovaných službách.
+                  Osobné údaje návštevníka webovej stránky, ktorého osobné údaje
+                  boli získané prostredníctvom kontaktného formulára sú
+                  spracúvané na základe súhlasu dotknutej osoby (čl. 6 ods. 1
+                  písm. a) Nariadenia GDPR.). Dotknutá osoba poskytuje svoj
+                  súhlas dobrovoľne, jeho neposkytnutie má za následok nemožnosť
+                  odoslať formulár.
                 </p>
               </li>
               <li className={styles.item}>
-                <b>Doba uchovávania osobných údajov</b>
+                <strong>Doba uchovávania osobných údajov</strong>
                 <p>
                   Osobné údaje dotknutej osoby získané prostredníctvom
                   kontaktného formulára sú spracúvané po dobu 3 rokov odo dňa
@@ -202,6 +290,7 @@ export default function GDPR() {
               </li>
             </ul>
           </li>
+          {/* 9.  bod*/}
           <li>
             <h2 className={styles["list-headline"]}>
               Podmienky zabezpečenia osobných údajov
@@ -213,19 +302,20 @@ export default function GDPR() {
               osoby, ktoré sú ním poverené.
             </p>
           </li>
+          {/* 10.  bod*/}
           <li>
             <h2 className={styles["list-headline"]}>Záverečné ustanovenia</h2>
             <p>
               S týmito podmienkami súhlasíte zaškrtnutím súhlasu prostredníctvom
               kontaktného formulára. Zaškrtnutím súhlasu potvrdzujete, že ste sa
               oboznámil(a) s podmienkami ochrany osobných údajov a že ich plne
-              akceptujete. Prevádzkovateľ má právo tieto podmienky zmeniť. Novú
-              verziu podmienok ochrany osobných údajov zverejní na svojej
-              internetovej stránke.
+              akceptujete. Prevádzkovateľ si vyhradzuje právo tieto podmienky
+              kedykoľvek aktualizovať. Aktuálna verzia je vždy zverejnená na
+              tejto stránke.
             </p>
           </li>
-          <p className={styles.text}>V Nitre dňa 1.11.2024</p>
         </ol>
+        <p className={styles.text}>V Nitre dňa 1.11.2024.</p>
       </div>
     </section>
   );

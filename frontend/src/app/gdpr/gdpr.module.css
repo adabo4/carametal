@@ -23,6 +23,10 @@
     width: 70%;
 }
 
+.margin-top {
+    margin-top: 1em;
+}
+
 .ordered-list>li::marker {
     color: var(--primary-color);
     font-size: 1.5em;
@@ -45,6 +49,10 @@
     margin-top: .3em;
 }
 
+.unordered-list p {
+    margin-top: .2em;
+}
+
 .item {
     list-style-type: disc;
     margin-top: 1em;
@@ -52,4 +60,40 @@
 
 .text {
     margin-top: 2em;
+    margin-right: 4em;
+    align-self: flex-end;
+}
+
+.link {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 900px) {
+
+    .main-container {
+        margin: 4em;
+    }
+
+    .ordered-list {
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .main-container {
+        margin: 2em;
+    }
+
+    .ordered-list {
+        width: 100%;
+    }
+
+    .text {
+        align-self: flex-start;
+    }
+
 }

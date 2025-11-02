@@ -19,7 +19,11 @@ export default function Navbar() {
             <div className={styles.logo}></div>
           </Link>
         </div>
-        <button className={styles["btn"]}>Kontaktujte nás</button>
+        <div>
+          <Link className={styles["btn"]} href="/kontakt">
+            Kontaktujte nás
+          </Link>
+        </div>
         <ul
           className={`${styles["nav-items-right"]} ${show ? styles.show : styles.hide}`}
         >

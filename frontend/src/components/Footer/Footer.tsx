@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -52,13 +53,18 @@ export default function Footer() {
         </div>
         <div className={styles["footer-info"]}>
           <div>
-            <button className={styles["btn"]}>Kontaktuje nás</button>
+            <Link className={styles["btn"]} href="/kontakt">
+              Kontaktujte nás
+            </Link>
           </div>
         </div>
       </div>
 
-      <div className={styles.disclaimer}>
+      <div className={styles.subfooter}>
         <p>© 2024 vytvorené pre CARAMETAL spol. s.r.o</p>
+        <Link className={styles["gdpr-link"]} target="_blank" href="/gdpr">
+          Ochrana súkromia
+        </Link>
       </div>
     </footer>
   );

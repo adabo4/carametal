@@ -70,6 +70,14 @@
     cursor: not-allowed;
 }
 
+.link {
+    color: var(--primary-color);
+}
+
+.link:hover {
+    color: var(--sections-green-hover, #4a8f3a);
+}
+
 @media screen and (max-width: 550px) {
 
     .form {

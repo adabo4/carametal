@@ -35,3 +35,16 @@
     width: 100%;
 
 }
+
+.submitBtn:hover {
+    background-color: var(--sections-green-hover, #4a8f3a);
+    ;
+}
+
+.link {
+    color: var(--primary-color);
+}
+
+.link:hover {
+    color: var(--sections-green-hover, #4a8f3a);
+}

@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./Form.module.css";
 import { FormData } from "@/lib/helpers";
+import Link from "next/link";
 
 export default function Form() {
   const {
@@ -109,15 +110,19 @@ export default function Form() {
           <span className={styles.error}>{errors.textMessage.message}</span>
         )}
       </div>
-      <div className="flex flex-col mx-10 sm:mx-1 items-left">
-        <div className="flex gap-2 items-baseline">
+      <div className="flex gap-2 flex-col mx-10 sm:mx-1 items-left">
+        <div>
           <input
             {...register("checkedBox", {
               required: "Pole je povinné.",
             })}
             type="checkbox"
+            className="mr-1"
           />
-          <p>Oboznámil som sa so zásadami o Ochrane osobných údajov</p>
+          Oboznámil(a) som sa so
+          <Link href="/gdpr" target="_blank" className={styles.link}>
+            <b> Zásadami ochrany osobných údajov.</b>
+          </Link>
         </div>
         {errors.checkedBox && (
           <span className={styles.error}>{errors.checkedBox.message}</span>
