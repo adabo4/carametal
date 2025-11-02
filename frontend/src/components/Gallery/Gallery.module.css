@@ -77,7 +77,10 @@
 } */
 
 .img-title {
-    display: none;
+    font-family: var(--font-montserratBold);
+    font-size: 1.5em;
+    margin-top: .5em;
+    font-weight: 700;
 }
 
 .preload-container {
@@ -118,7 +121,7 @@
     .img-title {
         display: block;
         text-align: center;
-        font-size: 1.5em;
+        font-size: 1.2em;
         margin-top: 1em;
     }
 }

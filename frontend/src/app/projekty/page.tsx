@@ -81,7 +81,7 @@ export default function Projects() {
           ></HomeSections>
         </div>
 
-        <Gallery images={galleryImages}></Gallery>
+        <Gallery name={true} images={galleryImages}></Gallery>
       </div>
     </>
   );

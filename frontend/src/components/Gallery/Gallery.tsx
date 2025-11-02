@@ -75,6 +75,7 @@ const galleryImages = [
 export default function Gallery({
   images,
   enableSlideAnimation = false,
+  name = false,
 }: GalleryImagesProps) {
   const [galleryImage, setGalleryImage] = useState(images[0].src);
   const [title, setTitle] = useState("");
@@ -328,7 +329,7 @@ export default function Gallery({
               loading="lazy"
             />
           </div>
-          <p className={styles["img-title"]}>{image.alt}</p>
+          {name && <p className={styles["img-title"]}>{image.alt}</p>}
         </div>
       ))}
 

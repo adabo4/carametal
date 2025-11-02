@@ -17,7 +17,7 @@ export default function Header() {
           <h2
             className={`${styles["second-title"]} ${montserratAlt1Light.className}`}
           >
-            Pieskovanie, otryskovávanie, nátery v Nitre
+            Pieskovanie, otryskávanie, nátery v Nitre
           </h2>
           <div className="btn-wrapper">
             <button className={`${styles.btn} ${styles.projects}`}>

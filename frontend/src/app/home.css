@@ -131,11 +131,11 @@
 .section-two-img {
     background-image: url("../../public/img/home_img/img2.webp");
     background-attachment: fixed;
-    background-position: 100% right;
+    background-position: 15%;
     background-size: contain;
     background-repeat: no-repeat;
     width: 750px;
-    height: 700px;
+    height: 1038px;
     margin-left: 2em;
 }
 
@@ -209,7 +209,8 @@
 
     .section-two-img {
         max-width: 800px;
-        height: 600px;
+        margin-right: 4em;
+
     }
 
     .section-header h3 {
