@@ -107,10 +107,12 @@ export default function CareerForm() {
               type="checkbox"
             />
             <p className="w-full">
-              Oboznámil som sa so{" "}
-              <Link href="/gdpr" target="_blank" className={styles.link}>
-                <b>Zásadami ochrany osobných údajov.</b>
+              Súhlasím so spracúvaním mojich osobných údajov pre účely
+              výberového konania podľa{" "}
+              <Link className={styles.link} href="/gdpr" target="_blank">
+                Zásad ochrany osobných údajov
               </Link>
+              .
             </p>
           </div>
           {errors.checkedBox && (

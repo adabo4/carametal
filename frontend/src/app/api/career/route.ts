@@ -78,9 +78,9 @@ export async function POST(request: NextRequest) {
           <div style="background-color: #e8f5e8; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #28a745;">
             <h3 style="color: #333; margin-top: 0;">Čo bude ďalej?</h3>
             <ul style="margin-bottom: 0;">
-              <li>Prehodnotíme Vašu žiadosť a CV</li>
-              <li>V prípade záujmu Vás budeme kontaktovať do 14 dní</li>
-              <li>Pozývame Vás na osobný pohovor</li>
+             <li>V prípade záujmu Vás budeme kontaktovať do 14 dní</li>
+             <li>V ďalšom kroku si môžeme vyžiadať Váš životopis alebo doplňujúce informácie</li>
+             <li>Vybraných uchádzačov pozývame na osobný pohovor</li>
             </ul>
           </div>
           

@@ -293,6 +293,57 @@ export default function GDPR() {
           {/* 9.  bod*/}
           <li>
             <h2 className={styles["list-headline"]}>
+              Spracúvanie osobných údajov uchádzačov o zamestnanie
+            </h2>
+            <ul className={styles["unordered-list"]}>
+              <li className={styles.item}>
+                <b>Účel spracúvania osobných údajov</b>
+                <p>
+                  V prípade, že máte záujem o prácu v našej spoločnosti, môžete
+                  nás kontaktovať prostredníctvom formulára „Kariéra“
+                  umiestneného na našej webovej stránke alebo prostredníctvom
+                  e-mailu. V rámci tohto kontaktovania nám odosielate svoje
+                  osobné údaje, ktoré sú spracúvané na účely posúdenia Vašej
+                  žiadosti o pracovné miesto a realizácie prípadného výberového
+                  konania.
+                </p>
+              </li>
+
+              <li className={styles.item}>
+                <b>Rozsah spracúvaných osobných údajov</b>
+                <p>
+                  Spracúvame osobné údaje, ktoré uvediete vo formulári alebo
+                  e-maile, najmä: meno, priezvisko, e-mailová adresa, telefónne
+                  číslo a ďalšie údaje, ktoré uvediete vo svojom sprievodnom
+                  texte alebo životopise.
+                </p>
+              </li>
+
+              <li className={styles.item}>
+                <b>Právny základ spracúvania</b>
+                <p>
+                  Právnym základom spracúvania osobných údajov uchádzačov o
+                  zamestnanie je Váš <b>súhlas</b> podľa čl. 6 ods. 1 písm. a)
+                  GDPR, ktorý udeľujete odoslaním formulára „Kariéra“. Tento
+                  súhlas môžete kedykoľvek odvolať zaslaním e-mailu na adresu{" "}
+                  <a href="mailto:info@carametal.sk">info@carametal.sk</a>.
+                </p>
+              </li>
+
+              <li className={styles.item}>
+                <b>Doba uchovávania osobných údajov</b>
+                <p>
+                  Vaše osobné údaje budú spracúvané po dobu trvania výberového
+                  konania, najviac však po dobu 6 mesiacov od ich doručenia,
+                  pokiaľ neudelíte súhlas s ich uchovaním pre prípad budúcich
+                  pracovných príležitostí.
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2 className={styles["list-headline"]}>
               Podmienky zabezpečenia osobných údajov
             </h2>
             <p>
