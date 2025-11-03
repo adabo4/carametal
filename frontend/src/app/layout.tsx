@@ -14,6 +14,9 @@ import Footer from "@/components/Footer/Footer";
 export const metadata: Metadata = {
   title: "Carametal | Povrchové úpravy | Otryskávanie | Nitra",
   description: "A modern Next.js application with TypeScript and Tailwind CSS",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

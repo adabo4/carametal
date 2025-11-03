@@ -1,6 +1,7 @@
 import React from "react";
 import { HomeSectionProps } from "@/lib/helpers";
 import styles from "./Sections.module.css";
+import Link from "next/link";
 
 export default function HomeSections({
   title,
@@ -10,6 +11,7 @@ export default function HomeSections({
   subtitleWidth = "normal",
   subtitleWeight = "light",
   paragraphWidth,
+  pathway,
 }: HomeSectionProps): React.JSX.Element {
   const widthClass = subtitleWidth !== "normal" ? styles[subtitleWidth] : "";
   const weightClass = subtitleWeight !== "light" ? styles[subtitleWeight] : "";
@@ -29,7 +31,11 @@ export default function HomeSections({
         </h3>
         {paragraph && <p>{paragraph}</p>}
       </div>
-      {btnText && <button className={styles.btn}>{btnText}</button>}
+      {btnText && pathway && (
+        <Link href={pathway || "#"} className={styles.btn}>
+          {btnText}
+        </Link>
+      )}
     </>
   );
 }

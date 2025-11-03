@@ -27,6 +27,7 @@ export default function Home() {
             subtitle="CARAMETAL spol. s.r.o. sa venuje povrchovým úpravám"
             btnText="Čítaj"
             subtitleWidth="normal"
+            pathway="/projekty"
           ></HomeSections>
         </section>
 

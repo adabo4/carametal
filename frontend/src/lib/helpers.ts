@@ -56,6 +56,7 @@ export interface HomeSectionProps {
   subtitleWidth?: "normal" | "wide";
   subtitleWeight?: "light" | "bold";
   paragraphWidth?: string;
+  pathway?: string;
 }
 
 export const navbarLinks: NavItem[] = [

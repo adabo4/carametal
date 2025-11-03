@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.css";
 import { montserratAlt1Light, montserratAlt1SemiBold } from "@/lib/fonts";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -20,12 +21,15 @@ export default function Header() {
             Pieskovanie, otryskávanie, nátery v Nitre
           </h2>
           <div className="btn-wrapper">
-            <button className={`${styles.btn} ${styles.projects}`}>
+            <Link
+              href="/projekty"
+              className={`${styles.btn} ${styles.projects}`}
+            >
               Projekty
-            </button>
-            <button className={`${styles.btn} ${styles.cta}`}>
+            </Link>
+            <Link href="/kontakt" className={`${styles.btn} ${styles.cta}`}>
               Kontaktujte nás
-            </button>
+            </Link>
           </div>
         </div>
       </header>
