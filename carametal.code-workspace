@@ -1,16 +1,8 @@
 {
   "folders": [
     {
-      "name": "🏠 Carametal (Root)",
-      "path": "."
-    },
-    {
-      "name": "🖥️ Frontend",
+      "name": "🏠 Carametal",
       "path": "./frontend"
-    },
-    {
-      "name": "🔧 Backend",
-      "path": "./backend"
     }
   ],
   "settings": {
@@ -29,7 +21,7 @@
     },
     "typescript.preferences.includePackageJsonAutoImports": "auto",
     "npm.packageManager": "npm",
-    "eslint.workingDirectories": ["frontend", "backend"]
+    "eslint.workingDirectories": ["frontend"]
   },
   "extensions": {
     "recommendations": [

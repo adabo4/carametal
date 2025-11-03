@@ -74,9 +74,9 @@ export async function POST(request: NextRequest) {
           <div style="margin-top: 30px; padding: 20px; background-color: #007bff; color: white; border-radius: 5px;">
             <h3 style="margin-top: 0; color: white;">CARAMETAL spol. s.r.o.</h3>
             <p style="margin: 5px 0;">Povrchové úpravy a ochrana kovov</p>
-            <p style="margin: 5px 0;">📞 Telefón: +421 XXX XXX XXX</p>
-            <p style="margin: 5px 0;">✉️ Email: info@carametal.sk</p>
-            <p style="margin-bottom: 0;">🌐 Web: www.carametal.sk</p>
+            <p style="margin: 5px 0;">Telefon: +421 37 77 29065</p>
+            <p style="margin: 5px 0;">Email: <a href="mailto:info@carametal.sk" style="color: white; text-decoration: underline;">info@carametal.sk</a></p>
+            <p style="margin-bottom: 0;">Web: <a href="https://www.carametal.sk" style="color: white; text-decoration: underline;" target="_blank">www.carametal.sk</a></p>
           </div>
         </div>
       `,
