@@ -14,7 +14,11 @@ import img6 from "../../../public/img/svg/nater5.svg";
 import img7 from "../../../public/img/svg/nater6.svg";
 import img8 from "../../../public/img/svg/nater11.svg";
 
-export const metadata = { title: "Služby | Carametal" };
+export const metadata = {
+  title: "Služby | Carametal",
+  description:
+    "Úpravy povrchov, pieskovanie, metalizácia, revitalizácia povrchov, kontajnerov a priemyselných podláh, protipožiarne nátery.",
+};
 
 export default function Services() {
   return (

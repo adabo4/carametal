@@ -6,6 +6,12 @@ import { TfiEmail } from "react-icons/tfi";
 import "../home.css";
 import Form from "@/components/Form/Form";
 
+export const metadata = {
+  title: "Kontakt | Carametal",
+  description:
+    "Kontaktujte nás telefonicky, alebo na emailovej adrese info@carametal.sk. Jarocká cesta, 949 01, Nitra.",
+};
+
 export default function ContactUs() {
   return (
     <div className={styles["main-container"]}>

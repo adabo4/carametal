@@ -4,6 +4,12 @@ import React from "react";
 import styles from "./CareerPage.module.css";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Kariéra | Carametal",
+  description:
+    "Momentálne obsadzujeme nasledujúce pracovné pozície. Neváhajte a kontaktujte nás za účelom osobného pohovoru.",
+};
+
 export default function Career() {
   return (
     <div className="main-container">

@@ -13,7 +13,8 @@ import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Carametal | Povrchové úpravy | Otryskávanie | Nitra",
-  description: "A modern Next.js application with TypeScript and Tailwind CSS",
+  description:
+    "Povrchové úpravy v Nitre, otryskávanie, protipožiarne a potravinárske nátery, nátery kontajnerov v Carametal.",
   icons: {
     icon: "/favicon.png",
   },

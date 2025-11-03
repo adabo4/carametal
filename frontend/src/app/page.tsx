@@ -11,6 +11,12 @@ import HomeSections from "@/components/HomeSections/HomeSections";
 import SectionText from "@/components/HomeSections/SectionText";
 import CarouselHorizontalNew from "@/components/Carousel/CarouselHorizontalNew";
 
+export const metadata = {
+  title: "Carametal | povrchové úpravy | otryskávanie |  Nitra",
+  description:
+    "Povrchové úpravy v Nitre, otryskávanie, protipožiarne a potravinárske nátery, nátery kontajnerov v Carametal.",
+};
+
 export default function Home() {
   return (
     <>
