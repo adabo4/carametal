@@ -2,6 +2,7 @@ import React from "react";
 import { HomeSectionProps } from "@/lib/helpers";
 import styles from "./Sections.module.css";
 import Link from "next/link";
+import { Route } from "next";
 
 export default function HomeSections({
   title,
@@ -15,6 +16,7 @@ export default function HomeSections({
 }: HomeSectionProps): React.JSX.Element {
   const widthClass = subtitleWidth !== "normal" ? styles[subtitleWidth] : "";
   const weightClass = subtitleWeight !== "light" ? styles[subtitleWeight] : "";
+  const linkHref: string = pathway || "#";
   return (
     <>
       <div
@@ -31,8 +33,8 @@ export default function HomeSections({
         </h3>
         {paragraph && <p>{paragraph}</p>}
       </div>
-      {btnText && pathway && (
-        <Link href={pathway || "#"} className={styles.btn}>
+      {btnText && (
+        <Link href={linkHref as Route} className={styles.btn}>
           {btnText}
         </Link>
       )}
