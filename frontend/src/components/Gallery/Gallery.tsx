@@ -319,7 +319,7 @@ export default function Gallery({
           >
             <Image
               src={image.src}
-              alt={image.alt}
+              alt={image.alt || "Gallery image"}
               width={400}
               height={400}
               placeholder="blur"
