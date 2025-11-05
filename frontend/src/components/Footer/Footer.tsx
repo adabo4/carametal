@@ -24,9 +24,18 @@ export default function Footer() {
               <p>949 01, Nitra</p>
             </div>
             <div>
-              <p>Mobil: +421 905 601 300 </p>
-              <p>Tel: +421 37 77 29065</p>
-              <p>Email: info@carametal.sk</p>
+              <p>
+                Mobil:{" "}
+                <Link href="tel:+421 905 601 300">+421 905 601 300</Link>{" "}
+              </p>
+              <p>
+                Tel:{" "}
+                <Link href="tel:+421 37 77 29065">+421 37 77 29065</Link>{" "}
+              </p>
+              <p>
+                Email:{" "}
+                <Link href="mailto:info@carametal.sk">info@carametal.sk</Link>
+              </p>
             </div>
           </div>
         </div>
