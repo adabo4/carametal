@@ -3,6 +3,7 @@ import HomeSections from "@/components/HomeSections/HomeSections";
 import React from "react";
 import styles from "./CareerPage.module.css";
 import Image from "next/image";
+import "../home.css";
 
 export const metadata = {
   title: "Kariéra | Carametal",

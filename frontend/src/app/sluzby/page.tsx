@@ -1,9 +1,7 @@
 import HomeSections from "@/components/HomeSections/HomeSections";
 import React from "react";
 import "../home.css";
-import ServicesSection from "@/components/Services/ServicesSection";
 import SectionText from "@/components/HomeSections/SectionText";
-import Image from "next/image";
 import styles from "./Services.module.css";
 import img1 from "../../../public/img/svg/nater.svg";
 import img2 from "../../../public/img/svg/nater2.svg";

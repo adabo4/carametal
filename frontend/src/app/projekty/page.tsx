@@ -1,6 +1,7 @@
 import Gallery from "@/components/Gallery/Gallery";
 import HomeSections from "@/components/HomeSections/HomeSections";
 import { GalleryImage } from "@/lib/helpers";
+import "../home.css";
 import React from "react";
 
 const galleryImages: GalleryImage[] = [

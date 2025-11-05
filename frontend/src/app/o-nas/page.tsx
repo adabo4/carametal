@@ -1,7 +1,7 @@
 import HomeSections from "@/components/HomeSections/HomeSections";
 import React from "react";
 import styles from "./About.module.css";
-import SectionText from "@/components/HomeSections/SectionText";
+import "../home.css";
 import Image from "next/image";
 import Gallery from "@/components/Gallery/Gallery";
 import { GalleryImage } from "@/lib/helpers";
