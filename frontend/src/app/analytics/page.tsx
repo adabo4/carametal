@@ -3,8 +3,17 @@ import { useEffect } from "react";
 
 export default function Analytics() {
   useEffect(() => {
-    // Redirect to Umami dashboard
-    window.location.href = "http://localhost:3001";
+    // Redirect to Umami dashboard - use environment variables
+    const isDevelopment = process.env.NODE_ENV === "development";
+    const analyticsUrl = isDevelopment
+      ? process.env.NEXT_PUBLIC_ANALYTICS_DEV_URL
+      : process.env.NEXT_PUBLIC_ANALYTICS_PROD_URL;
+
+    if (analyticsUrl) {
+      window.location.href = analyticsUrl;
+    } else {
+      console.error("Analytics URL not configured");
+    }
   }, []);
 
   return (
@@ -15,7 +24,11 @@ export default function Analytics() {
         <p className="text-sm text-gray-500 mt-2">
           If you're not redirected,
           <a
-            href="http://localhost:3001"
+            href={
+              process.env.NODE_ENV === "development"
+                ? process.env.NEXT_PUBLIC_ANALYTICS_DEV_URL
+                : process.env.NEXT_PUBLIC_ANALYTICS_PROD_URL
+            }
             className="text-blue-600 underline ml-1"
           >
             click here
