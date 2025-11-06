@@ -10,7 +10,6 @@ import {
   zeyada,
 } from "@/lib/fonts";
 import Footer from "@/components/Footer/Footer";
-import DebugEnv from "@/components/DebugEnv";
 
 export const metadata: Metadata = {
   title: "Carametal | Povrchové úpravy | Otryskávanie | Nitra",
@@ -38,7 +37,6 @@ export default function RootLayout({
       <body
         className={`${montserratAlt1SemiBold.variable} ${roboto.variable} ${zeyada.variable} ${montserratAltBold.variable} ${montserratAlt1Light.variable}`}
       >
-        <DebugEnv />
         <ConditionalNavigation></ConditionalNavigation>
         {children}
         <Footer></Footer>
