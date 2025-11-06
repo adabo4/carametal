@@ -3,6 +3,10 @@ import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
+    // Debug logging to check environment variables
+    console.log("EMAIL_USER:", process.env.EMAIL_USER ? "Set" : "NOT SET");
+    console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "Set" : "NOT SET");
+
     const body = await request.json();
     const { firstName, lastName, email, phone, textMessage } = body;
 
