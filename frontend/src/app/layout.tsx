@@ -10,6 +10,7 @@ import {
   zeyada,
 } from "@/lib/fonts";
 import Footer from "@/components/Footer/Footer";
+import DebugEnv from "@/components/DebugEnv";
 
 export const metadata: Metadata = {
   title: "Carametal | Povrchové úpravy | Otryskávanie | Nitra",
@@ -28,27 +29,16 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <head>
-        {process.env.NODE_ENV === "development"
-          ? process.env.NEXT_PUBLIC_UMAMI_SRC && (
-              <script
-                async
-                defer
-                src={process.env.NEXT_PUBLIC_UMAMI_SRC}
-                data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-              ></script>
-            )
-          : process.env.NEXT_PUBLIC_UMAMI_SRC_PROD && (
-              <script
-                async
-                defer
-                src={process.env.NEXT_PUBLIC_UMAMI_SRC_PROD}
-                data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID_PROD}
-              ></script>
-            )}
+        <script
+          defer
+          src="https://analytics.carametal.sk/script.js"
+          data-website-id="70770e4e-f2ef-4a00-a77d-9f91d8eef77c"
+        ></script>
       </head>
       <body
         className={`${montserratAlt1SemiBold.variable} ${roboto.variable} ${zeyada.variable} ${montserratAltBold.variable} ${montserratAlt1Light.variable}`}
       >
+        <DebugEnv />
         <ConditionalNavigation></ConditionalNavigation>
         {children}
         <Footer></Footer>
