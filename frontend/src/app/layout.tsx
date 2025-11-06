@@ -28,14 +28,23 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <head>
-        {process.env.UMAMI_PUBLIC_SRC && (
-          <script
-            async
-            defer
-            src={process.env.UMAMI_PUBLIC_SRC}
-            data-website-id={process.env.UMAMI_WEBSITE_ID}
-          ></script>
-        )}
+        {process.env.NODE_ENV === "development"
+          ? process.env.NEXT_PUBLIC_UMAMI_SRC && (
+              <script
+                async
+                defer
+                src={process.env.NEXT_PUBLIC_UMAMI_SRC}
+                data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+              ></script>
+            )
+          : process.env.NEXT_PUBLIC_UMAMI_SRC_PROD && (
+              <script
+                async
+                defer
+                src={process.env.NEXT_PUBLIC_UMAMI_SRC_PROD}
+                data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID_PROD}
+              ></script>
+            )}
       </head>
       <body
         className={`${montserratAlt1SemiBold.variable} ${roboto.variable} ${zeyada.variable} ${montserratAltBold.variable} ${montserratAlt1Light.variable}`}
