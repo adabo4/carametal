@@ -14,6 +14,9 @@ import img8 from "../../../public/img/svg/nater11.svg";
 
 export const metadata = {
   title: "Služby | Carametal",
+  alternates: {
+    canonical: "https://carametal.sk/sluzby",
+  },
   description:
     "Úpravy povrchov, pieskovanie, metalizácia, revitalizácia povrchov, kontajnerov a priemyselných podláh, protipožiarne nátery.",
 };

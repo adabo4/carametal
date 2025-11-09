@@ -48,6 +48,9 @@ const galleryImages: GalleryImage[] = [
 
 export const metadata = {
   title: "O nás | Carametal",
+  alternates: {
+    canonical: "https://carametal.sk/o-nas",
+  },
   description:
     "Sme firma s viac ako 30. ročnou tradíciou v oblasti povrchových úprav a pieskovania veľkých i malých konštrukcií, kontajnerov, nádrží, priemyselných podláh, vonkajších plôch a stavieb. ",
 };

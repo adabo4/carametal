@@ -69,6 +69,9 @@ const galleryImages: GalleryImage[] = [
 
 export const metadata = {
   title: "Projekty | Carametal",
+  alternates: {
+    canonical: "https://carametal.sk/projekty",
+  },
   description: "Tu nájdete k dispozícii prehľad našich dokončených projektov.",
 };
 

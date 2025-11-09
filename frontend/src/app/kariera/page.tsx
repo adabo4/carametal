@@ -7,6 +7,9 @@ import "../home.css";
 
 export const metadata = {
   title: "Kariéra | Carametal",
+  alternates: {
+    canonical: "https://carametal.sk/kariera",
+  },
   description:
     "Momentálne obsadzujeme nasledujúce pracovné pozície. Neváhajte a kontaktujte nás za účelom osobného pohovoru.",
 };

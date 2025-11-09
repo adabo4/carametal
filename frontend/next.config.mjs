@@ -11,6 +11,20 @@ const nextConfig = {
             },
         ],
     },
+    async redirects() {
+        return [
+            {
+                source: '/služby',
+                destination: '/sluzby',
+                permanent: true,
+            },
+            {
+                source: '/o-nás',
+                destination: '/o-nas',
+                permanent: true,
+            },
+        ]
+    },
 };
 
 export default nextConfig;

@@ -8,6 +8,9 @@ import Form from "@/components/Form/Form";
 
 export const metadata = {
   title: "Kontakt | Carametal",
+  alternates: {
+    canonical: "https://carametal.sk/kontakt",
+  },
   description:
     "Kontaktujte nás telefonicky, alebo na emailovej adrese info@carametal.sk. Jarocká cesta, 949 01, Nitra.",
 };
